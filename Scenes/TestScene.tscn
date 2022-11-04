@@ -1,17 +1,106 @@
-[gd_scene load_steps=2 format=3 uid="uid://xkekpeytw2wn"]
+[gd_scene load_steps=10 format=3 uid="uid://xkekpeytw2wn"]
 
 [ext_resource type="PackedScene" uid="uid://06ceuxdcq6hd" path="res://Scenes/Character.tscn" id="1_oj2yk"]
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="2_kympo"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fyuk4"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_t6uvv"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nd07g"]
+radius = 16.7665
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_neqmc"]
+radius = 3.46083
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qovmr"]
+points = PackedVector3Array(0, 1.59, 0, 7.5, 0, -6.2, -7.5, 0, -6.4, 0, 2, 0, 7.5, 2, -6.2, -7.5, 2, -6.4)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tcxad"]
+points = PackedVector3Array(0, 1.59, 0, 20, 0, -16, 20, 2, -16, 0, 2, 0, -20, 2, -16, -20, 0, -16)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_i35wu"]
+vertices = PackedVector3Array(-20.7066, 0.451621, -25.0711, -28.9566, 0.451621, -25.0711, -28.9566, 0.451621, -13.5711, -12.4566, 0.451621, -25.0711, -20.7066, 0.451621, -25.0711, -28.9566, 0.451621, -13.5711, 3.29341, 0.451621, -3.07113, 4.29341, 0.451621, -3.32113, 4.29341, 0.451621, -25.0711, -4.20659, 0.451621, -25.0711, 3.29341, 0.451621, -1.57113, 3.29341, 0.451621, -3.07113, -4.20659, 0.451621, -25.0711, -12.4566, 0.451621, -25.0711, -28.9566, 0.451621, -13.5711, -28.9566, 0.451621, -1.82113, 29.0434, 0.451621, -13.0711, 29.0434, 0.451621, -25.0711, 22.7934, 0.451621, -25.0711, 29.0434, 0.451621, -13.0711, 22.7934, 0.451621, -25.0711, 16.5434, 0.451621, -25.0711, 4.29341, 0.451621, -25.0711, 4.29341, 0.451621, -3.32113, 5.54341, 0.451621, -3.07113, 10.2934, 0.451621, -25.0711, 29.0434, 0.451621, -13.0711, 16.5434, 0.451621, -25.0711, 10.2934, 0.451621, -25.0711, 5.54341, 0.451621, -3.07113, 5.54341, 0.451621, -1.07113, 29.0434, 0.451621, -1.07113, -28.9566, 0.451621, 3.17887, 3.29341, 0.451621, 2.92887, 3.29341, 0.451621, -1.57113, -28.9566, 0.451621, -1.82113, 5.54341, 0.451621, 2.42887, 29.0434, 0.451621, 2.42887, 29.0434, 0.451621, -1.07113, 5.54341, 0.451621, -1.07113, 22.7934, 0.451621, 25.1789, 29.0434, 0.451621, 25.1789, 29.0434, 0.451621, 13.6789, 16.5434, 0.451621, 25.1789, 22.7934, 0.451621, 25.1789, 29.0434, 0.451621, 13.6789, 5.54341, 0.451621, 4.42887, 4.29341, 0.451621, 4.67887, 4.29341, 0.451621, 25.1789, 10.2934, 0.451621, 25.1789, 10.2934, 0.451621, 25.1789, 16.5434, 0.451621, 25.1789, 29.0434, 0.451621, 13.6789, 29.0434, 0.451621, 2.42887, 5.54341, 0.451621, 2.42887, 5.54341, 0.451621, 4.42887, -28.9566, 0.451621, 14.1789, -28.9566, 0.451621, 25.1789, -20.7066, 0.451621, 25.1789, -28.9566, 0.451621, 14.1789, -20.7066, 0.451621, 25.1789, -12.4566, 0.451621, 25.1789, 4.29341, 0.451621, 25.1789, 4.29341, 0.451621, 4.67887, 3.29341, 0.451621, 4.42887, -4.20659, 0.451621, 25.1789, -4.20659, 0.451621, 25.1789, 3.29341, 0.451621, 4.42887, 3.29341, 0.451621, 2.92887, -28.9566, 0.451621, 3.17887, -28.9566, 0.451621, 14.1789, -12.4566, 0.451621, 25.1789)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 13), PackedInt32Array(13, 10, 14), PackedInt32Array(14, 10, 15), PackedInt32Array(18, 17, 16), PackedInt32Array(21, 20, 19), PackedInt32Array(23, 22, 24), PackedInt32Array(24, 22, 25), PackedInt32Array(27, 26, 28), PackedInt32Array(28, 26, 31), PackedInt32Array(28, 31, 29), PackedInt32Array(29, 31, 30), PackedInt32Array(33, 32, 34), PackedInt32Array(34, 32, 35), PackedInt32Array(39, 38, 36), PackedInt32Array(36, 38, 37), PackedInt32Array(42, 41, 40), PackedInt32Array(45, 44, 43), PackedInt32Array(47, 46, 48), PackedInt32Array(48, 46, 49), PackedInt32Array(51, 50, 52), PackedInt32Array(52, 50, 53), PackedInt32Array(53, 50, 55), PackedInt32Array(53, 55, 54), PackedInt32Array(58, 57, 56), PackedInt32Array(61, 60, 59), PackedInt32Array(63, 62, 64), PackedInt32Array(64, 62, 65), PackedInt32Array(67, 66, 68), PackedInt32Array(68, 66, 71), PackedInt32Array(68, 71, 70), PackedInt32Array(68, 70, 69)]
 
 [node name="Node3d" type="Node3D"]
 
-[node name="CsgBox3d" type="CSGBox3D" parent="."]
-use_collision = true
-size = Vector3(15.689, 0.0967574, 15.3409)
+[node name="Node3d" parent="." groups=["Player"] instance=ExtResource("1_oj2yk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94834, 0.0470677, 11.7273)
 
-[node name="Node3d" parent="." instance=ExtResource("1_oj2yk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0470687, 0)
+[node name="Enemy" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.999101, 0, 0.0423989, 0, 1, 0, -0.0423989, 0, 0.999101, -3.53497, 0, -5.64924)
+script = ExtResource("2_kympo")
 
-[node name="CsgBox3d2" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76034, -1.66156)
+[node name="CollisionShape3d" type="CollisionShape3D" parent="Enemy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11734, 0)
+shape = SubResource("CapsuleShape3D_fyuk4")
+
+[node name="MeshInstance3d" type="MeshInstance3D" parent="Enemy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12522, 0)
+mesh = SubResource("CapsuleMesh_t6uvv")
+
+[node name="MeshInstance3d2" type="MeshInstance3D" parent="Enemy"]
+transform = Transform3D(-1.06958e-08, 1.39698e-08, 0.251476, 0.244692, -4.9738e-14, 1.09923e-08, 0, 0.335219, -1.11759e-08, -0.0381799, 1.61302, -0.498618)
+mesh = SubResource("CapsuleMesh_t6uvv")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemy"]
+
+[node name="PatrolTimer" type="Timer" parent="Enemy"]
+wait_time = 5.0
+one_shot = true
+
+[node name="HearingFar" type="Area3D" parent="Enemy"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy/HearingFar"]
+shape = SubResource("SphereShape3D_nd07g")
+
+[node name="HearingClose" type="Area3D" parent="Enemy"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy/HearingClose"]
+shape = SubResource("SphereShape3D_neqmc")
+
+[node name="SightClose" type="Area3D" parent="Enemy"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy/SightClose"]
+shape = SubResource("ConvexPolygonShape3D_qovmr")
+
+[node name="SightFar" type="Area3D" parent="Enemy"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy/SightFar"]
+shape = SubResource("ConvexPolygonShape3D_tcxad")
+
+[node name="Head" type="Marker3D" parent="Enemy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46375, 0)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navmesh = SubResource("NavigationMesh_i35wu")
+
+[node name="CsgBox3d2" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.45755, 1.76034, 0.641151)
 use_collision = true
 size = Vector3(6.74872, 1, 1)
+
+[node name="CsgBox3d" type="CSGBox3D" parent="NavigationRegion3D"]
+use_collision = true
+size = Vector3(58.9132, 0.0967574, 51.1423)
+
+[node name="Marker3d" type="Marker3D" parent="." groups=["EnemyWaypoint"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.03518, 0, -6.53789)
+
+[node name="Marker3d2" type="Marker3D" parent="." groups=["EnemyWaypoint"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.967, 0, -6.81522)
+
+[node name="DirectionalLight3d" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.513332, 0.85819, 0, -0.85819, 0.513332, 0, 0, 0)
+shadow_enabled = true
+
+[connection signal="timeout" from="Enemy/PatrolTimer" to="Enemy" method="_on_patrol_timer_timeout"]
+[connection signal="body_entered" from="Enemy/HearingFar" to="Enemy" method="_on_hearing_far_body_entered"]
+[connection signal="body_exited" from="Enemy/HearingFar" to="Enemy" method="_on_hearing_far_body_exited"]
+[connection signal="body_entered" from="Enemy/HearingClose" to="Enemy" method="_on_hearing_close_body_entered"]
+[connection signal="body_exited" from="Enemy/HearingClose" to="Enemy" method="_on_hearing_close_body_exited"]
+[connection signal="body_entered" from="Enemy/SightClose" to="Enemy" method="_on_sight_close_body_entered"]
+[connection signal="body_exited" from="Enemy/SightClose" to="Enemy" method="_on_sight_close_body_exited"]
+[connection signal="body_entered" from="Enemy/SightFar" to="Enemy" method="_on_sight_far_body_entered"]
+[connection signal="body_exited" from="Enemy/SightFar" to="Enemy" method="_on_sight_far_body_exited"]
