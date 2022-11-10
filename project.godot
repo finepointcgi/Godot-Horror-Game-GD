@@ -8,12 +8,32 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "Node",
+"class": &"AudioManager",
+"language": &"GDScript",
+"path": "res://Scripts/AudioManager.gd"
+}, {
+"base": "Node",
+"class": &"Surface",
+"language": &"GDScript",
+"path": "res://Scripts/Surface.gd"
+}]
+_global_script_class_icons={
+"AudioManager": "",
+"Surface": ""
+}
+
 [application]
 
 config/name="Godot Horror Game GD"
 run/main_scene="res://Scenes/TestScene.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalAudioManager="*res://Scripts/AudioManager.gd"
 
 [dotnet]
 

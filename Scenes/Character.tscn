@@ -321,6 +321,7 @@ shape = SubResource("CapsuleShape3D_vkoaf")
 
 [node name="Camera3d" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78661, -0.152885)
+fov = 37.8493
 
 [node name="Marker3D" type="Marker3D" parent="Camera3d"]
 
@@ -335,3 +336,7 @@ light_energy = 0.0
 
 [node name="Light Detect" parent="." instance=ExtResource("2_m11es")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01928, 0)
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+
+[node name="Footsteps" type="AudioStreamPlayer" parent="."]

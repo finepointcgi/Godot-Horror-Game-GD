@@ -16,6 +16,13 @@ enum States{
 @export var chaseSpeed = 3
 @export var patrolSpeed = 2
 
+@export var CloseLightDetectionLevel = .3
+@export var FarLightDetectionLevel = .6
+@export var FarCrouchedDetectionLightLevel = .7
+@export var CloseSoundDetectionLevel = .7
+@export var FarSoundDetectionLevel = .7
+
+
 var waypointIndex : int
 var playerInEarshotFar : bool
 var playerInEarshotClose : bool
@@ -57,6 +64,7 @@ func _process(delta):
 			pass
 		States.waiting:
 			print("waiting")
+			CheckForPlayer()
 			pass
 	pass
 
@@ -74,25 +82,25 @@ func CheckForPlayer():
 	var result = space_state.intersect_ray(PhysicsRayQueryParameters3D.create($Head.global_position, player.get_node("Camera3d").global_position, 1, [self]))
 	if result.size() > 0:
 		if(result["collider"].is_in_group("Player")):
-			
-			if(playerInEarshotClose):
+			print(result["collider"].NoiseValue / global_position.distance_to( result["collider"].global_position))
+			if(playerInEarshotClose) && result["collider"].NoiseValue / global_position.distance_to( result["collider"].global_position)  > CloseSoundDetectionLevel:
 				if(result["collider"].crouched == false):
 					currentState = States.chasing
 					
-			if(playerInEarshotFar):
+			if(playerInEarshotFar) && result["collider"].NoiseValue / global_position.distance_to( result["collider"].global_position) > FarSoundDetectionLevel:
 				if(result["collider"].crouched == false):
 					currentState = States.hunting
 					navigationAgent.set_target_location(player.global_position)
 					
 			if(playerInSightClose):
-				if result["collider"].LightLevel > .3:
+				if result["collider"].LightLevel > CloseLightDetectionLevel:
 					currentState = States.chasing
 				
 			if(playerInSightFar):
-				if(result["collider"].crouched == false) && result["collider"].LightLevel > .6:
+				if(result["collider"].crouched == false) && result["collider"].LightLevel > FarLightDetectionLevel:
 					currentState = States.hunting
 					navigationAgent.set_target_location(player.global_position)
-				if(result["collider"].crouched == true) && result["collider"].LightLevel > .7:
+				if(result["collider"].crouched == true) && result["collider"].LightLevel > FarCrouchedDetectionLightLevel:
 					currentState = States.hunting
 					navigationAgent.set_target_location(player.global_position)
 	pass

@@ -95,6 +95,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.967, 0, -6.81522)
 transform = Transform3D(1, 0, 0, 0, 0.513332, 0.85819, 0, -0.85819, 0.513332, 0, 0, 0)
 shadow_enabled = true
 
+[node name="Wood" type="CSGBox3D" parent="."]
+transform = Transform3D(4.20533, 0, 0, 0, 1, 0, 0, 0, 3.04264, -2.77351, -1.90735e-06, 4.69663)
+use_collision = true
+size = Vector3(2.6254, 0.167719, 2.40703)
+metadata/SurfaceType = "Wood"
+
+[node name="Concrete" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4737, -1.90735e-06, 4.04839)
+use_collision = true
+size = Vector3(2.6254, 0.167719, 2.40703)
+metadata/SurfaceType = "Concrete"
+
 [connection signal="timeout" from="Enemy/PatrolTimer" to="Enemy" method="_on_patrol_timer_timeout"]
 [connection signal="body_entered" from="Enemy/HearingFar" to="Enemy" method="_on_hearing_far_body_entered"]
 [connection signal="body_exited" from="Enemy/HearingFar" to="Enemy" method="_on_hearing_far_body_exited"]
