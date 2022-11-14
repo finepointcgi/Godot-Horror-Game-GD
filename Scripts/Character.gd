@@ -1,5 +1,13 @@
 extends CharacterBody3D
 
+enum states{
+	walking,
+	sneaking,
+	crouching,
+	inAir,
+	standing,
+	jumping
+}
 
 const SPEED = 5.0
 const CROUCHSPEED = 2.0
@@ -12,85 +20,135 @@ var wasInAir : bool
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var NoiseValue = 0
+@onready var footAudioPlayer := $Footsteps
+@onready var jumpAudioPlayer := $Jump
+
+var initSurfaceObject : SurfaceObject
+
+var currentState := states.standing
+
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	initSurfaceObject = SurfaceObject.new()
+	initSurfaceObject.SurfaceResource = ResourceLoader.load("res://Sounds/Wood.tres")
 
 func _physics_process(delta):
-	NoiseValue = 0
 	
-	var space_state = get_world_3d().direct_space_state
-	var surfaceResult = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(global_position + Vector3(0,1,0), global_position + Vector3(0,-1,0), 1, [self]))
-	var surface : Surface = GlobalAudioManager.SoundDict["Concrete"]
-	
-	if surfaceResult.size() > 0:
-		if surfaceResult.has("collider"):
-			var surfaceObject : Node3D = surfaceResult["collider"]
-			if surfaceObject.has_meta("SurfaceType"):
-				surface = GlobalAudioManager.SoundDict[surfaceObject.get_meta("SurfaceType")]
-			
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y -= gravity * delta
-
-	if is_on_floor():
-		if wasInAir:
-			$Jump.stream = surface.JumpLandSteamWAV
-			$Jump.play()
-			NoiseValue = surface.SoundLandValue
-	# Handle Jump.
-		if Input.is_action_just_pressed("ui_accept"):
-			velocity.y = JUMP_VELOCITY
+	wasInAir = !is_on_floor()
+	var velocity = getInput()
 	LightLevel = get_node("Light Detect").LightLevel
 	
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector("MoveLeft", "MoveRight", "MoveForward", "MoveBackwards")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	var speed = SPEED
-	if Input.is_action_pressed("Crouch"):
-		
+	handleSound(getSurface())
+	handleAnimation()
+	handleMovement(velocity, delta)
+
+
+func handleAnimation():
+	var space_state = get_world_3d().direct_space_state
+	if currentState == states.crouching || currentState == states.sneaking:
 		if !crouched:
 			$AnimationPlayer.play("Crouch")
 			crouched = true
 	else:
 		if crouched:
-			var crouchedResult = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(position, position + Vector3(0,2,0), 1, [self]))
+			var crouchedResult = space_state.intersect_ray(
+				PhysicsRayQueryParameters3D.create(position, 
+				position + Vector3(0,2,0), 
+				1, 
+				[self]))
+				
 			if crouchedResult.size() == 0:
-				$AnimationPlayer.play("UnCrouch")
+				$AnimationPlayer.play_backwards("Crouch")
 				crouched = false
-	if crouched:
+			else:
+				currentState = states.sneaking
+
+func handleSound(surface : SurfaceObject):
+	NoiseValue = 0
+	if currentState == states.walking :
+		NoiseValue = surface.SurfaceResource.SoundValue
+		if !footAudioPlayer.playing:
+			footAudioPlayer.stream = surface.SurfaceResource.WalkSteamWAV
+			footAudioPlayer.play()
+		
+		
+	if currentState == states.sneaking :
+		NoiseValue = surface.SurfaceResource.SoundValue / 3
+		if !footAudioPlayer.playing:
+			footAudioPlayer.stream = surface.SurfaceResource.SneakSteamWAV
+			footAudioPlayer.play()
+		
+	
+	if currentState == states.inAir && wasInAir:
+		jumpAudioPlayer.stream = surface.SurfaceResource.JumpLandSteamWAV
+		jumpAudioPlayer.play()
+		NoiseValue = surface.SurfaceResource.SoundLandValue
+	
+	if currentState == states.standing || currentState == states.crouching:
+		if footAudioPlayer.playing:
+			footAudioPlayer.stop()
+	pass
+
+func handleMovement(direction : Vector3, delta : float):
+	var speed = SPEED
+	if currentState == states.sneaking:
 		speed = CROUCHSPEED
-		
-	if Input.is_action_just_pressed("Flashlight"):
-		if flashLightIsOut:
-			$AnimationPlayer.play("FlashlightHide")
-		else:
-			$AnimationPlayer.play("FlashlightShow")
-		flashLightIsOut = !flashLightIsOut
-		
+	
+	if currentState == states.jumping:
+		velocity.y = JUMP_VELOCITY
+	
 	if direction:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
-		if !$Footsteps.is_playing() && is_on_floor():
-			if crouched:
-				$Footsteps.stream = surface.SneakSteamWAV
-			else:
-				$Footsteps.stream = surface.WalkSteamWAV
-			$Footsteps.play()
-		if NoiseValue < surface.SoundValue && !crouched:
-					NoiseValue = surface.SoundValue
-		if !is_on_floor():
-			$Footsteps.stop()
 	else:
-		if $Footsteps.is_playing():
-			$Footsteps.stop()
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
-	wasInAir = !is_on_floor()
+		# Add the gravity.
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+	
 	move_and_slide()
+
+func getInput() -> Vector3:
+	var input_dir = Input.get_vector("MoveLeft", "MoveRight", "MoveForward", "MoveBackwards")
+	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
+	if Input.is_action_just_pressed("Flashlight"):
+		handleFlashLight()
 	
+	if direction != Vector3.ZERO:
+		if(Input.is_action_pressed("Crouch")):
+			currentState = states.sneaking
+		else:
+			currentState = states.walking
+	else:
+		if(Input.is_action_pressed("Crouch")):
+			currentState = states.crouching
+		else:
+			currentState = states.standing
+	if(Input.is_action_just_pressed("Jump")) && is_on_floor():
+		currentState = states.jumping
+	if(!is_on_floor()):
+		currentState = states.inAir
+	return direction
 	
+func handleFlashLight():
+	if flashLightIsOut:
+		$AnimationPlayer.play("FlashlightHide")
+	else:
+		$AnimationPlayer.play("FlashlightShow")
+	flashLightIsOut = !flashLightIsOut
+
+func getSurface() -> SurfaceObject:
+	var space_state = get_world_3d().direct_space_state
+	var surfaceResult = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(global_position + Vector3(0,1,0), global_position + Vector3(0,-1,0), 1, [self]))
+	var surface : SurfaceObject = initSurfaceObject
+	
+	if surfaceResult.size() > 0:
+		if surfaceResult.has("collider"):
+			if surfaceResult["collider"] is SurfaceObject:
+				surface = surfaceResult["collider"]
+	return surface
 
 func _input(event):
 	if(event is InputEventMouseMotion):

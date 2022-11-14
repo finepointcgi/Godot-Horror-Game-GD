@@ -63,7 +63,7 @@ func _process(delta):
 			print("hunting player")
 			pass
 		States.waiting:
-			print("waiting")
+			#print("waiting")
 			CheckForPlayer()
 			pass
 	pass
@@ -80,22 +80,15 @@ func MoveTowardsPoint(delta, speed):
 func CheckForPlayer():
 	var space_state = get_world_3d().direct_space_state
 	var result = space_state.intersect_ray(PhysicsRayQueryParameters3D.create($Head.global_position, player.get_node("Camera3d").global_position, 1, [self]))
+	var isPlayerBehindWall : bool
 	if result.size() > 0:
 		if(result["collider"].is_in_group("Player")):
 			print(result["collider"].NoiseValue / global_position.distance_to( result["collider"].global_position))
-			if(playerInEarshotClose) && result["collider"].NoiseValue / global_position.distance_to( result["collider"].global_position)  > CloseSoundDetectionLevel:
-				if(result["collider"].crouched == false):
-					currentState = States.chasing
-					
-			if(playerInEarshotFar) && result["collider"].NoiseValue / global_position.distance_to( result["collider"].global_position) > FarSoundDetectionLevel:
-				if(result["collider"].crouched == false):
-					currentState = States.hunting
-					navigationAgent.set_target_location(player.global_position)
-					
+			isPlayerBehindWall = true
 			if(playerInSightClose):
 				if result["collider"].LightLevel > CloseLightDetectionLevel:
 					currentState = States.chasing
-				
+					print("Saw Player Chasing Player")
 			if(playerInSightFar):
 				if(result["collider"].crouched == false) && result["collider"].LightLevel > FarLightDetectionLevel:
 					currentState = States.hunting
@@ -103,6 +96,19 @@ func CheckForPlayer():
 				if(result["collider"].crouched == true) && result["collider"].LightLevel > FarCrouchedDetectionLightLevel:
 					currentState = States.hunting
 					navigationAgent.set_target_location(player.global_position)
+	
+	if isPlayerBehindWall:
+		player.NoiseValue = player.NoiseValue / 2
+	print(player.NoiseValue)
+	if(playerInEarshotClose) && player.NoiseValue / global_position.distance_to( player.global_position)  > CloseSoundDetectionLevel:
+		if(player.crouched == false):
+			currentState = States.hunting
+			
+	if(playerInEarshotFar) && player.NoiseValue / global_position.distance_to( player.global_position) > FarSoundDetectionLevel:
+		if(player.crouched == false):
+			currentState = States.hunting
+			navigationAgent.set_target_location(player.global_position)
+					
 	pass
 
 func faceDirection(direction : Vector3):

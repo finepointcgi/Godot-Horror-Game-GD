@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://b6a7o2fxxs4vt"]
+
+[ext_resource type="AudioStream" uid="uid://bwqorvptgstj0" path="res://Sounds/JumpLand.wav" id="1_0t4bm"]
+[ext_resource type="AudioStream" uid="uid://cbc2jyl76mycx" path="res://Sounds/FootstepsOnConcrete.wav" id="2_7ai44"]
+[ext_resource type="Script" path="res://Scripts/Surface.gd" id="3_03dqq"]
+
+[resource]
+script = ExtResource("3_03dqq")
+SoundValue = 6
+SoundLandValue = 12
+WalkSteamWAV = ExtResource("2_7ai44")
+JumpLandSteamWAV = ExtResource("1_0t4bm")
+SneakSteamWAV = ExtResource("2_7ai44")

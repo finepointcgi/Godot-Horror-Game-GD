@@ -1,9 +1,9 @@
-extends Node
+extends Resource
 
 class_name Surface
 
-var SoundValue : int
-var SoundLandValue : int
-var WalkSteamWAV : AudioStream
-var JumpLandSteamWAV : AudioStream
-var SneakSteamWAV : AudioStream
+@export var SoundValue : int
+@export var SoundLandValue : int
+@export var WalkSteamWAV : AudioStream
+@export var JumpLandSteamWAV : AudioStream
+@export var SneakSteamWAV : AudioStream
