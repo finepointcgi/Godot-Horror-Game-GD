@@ -1,0 +1,314 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqkn0qkhgqpl8"]
+
+[ext_resource type="PackedScene" path="res://Models/BlockOut/floor.tscn" id="1_qlooj"]
+[ext_resource type="PackedScene" path="res://Models/BlockOut/wall.tscn" id="2_1gvvl"]
+[ext_resource type="PackedScene" path="res://Models/BlockOut/celling.tscn" id="3_rs687"]
+[ext_resource type="PackedScene" path="res://Models/BlockOut/door.tscn" id="3_tusux"]
+[ext_resource type="PackedScene" path="res://Models/BlockOut/window.tscn" id="3_yyno1"]
+[ext_resource type="PackedScene" uid="uid://06ceuxdcq6hd" path="res://Scenes/Character.tscn" id="6_p1jms"]
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(0.998705, 0, 0, 0, 0.998705, 0, 0, 0, 0.998705, 0, 0, 0)
+
+[node name="Level BSP" type="Node3D" parent="."]
+
+[node name="Bedroom" type="Node3D" parent="Level BSP"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Level BSP/Bedroom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.16024, 0.285418, -6.8066)
+use_collision = true
+size = Vector3(1.37, 0.46, 1.91)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Level BSP/Bedroom"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 3.35068, 0.517084, -4.86065)
+use_collision = true
+size = Vector3(1.5, 0.881428, 0.5)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Level BSP/Bedroom"]
+transform = Transform3D(1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, 6.28126, 0.361979, -4.40042)
+use_collision = true
+size = Vector3(0.590351, 0.642212, 0.5)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Level BSP/Bedroom"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 3.5418, 0.516119, -7.60003)
+use_collision = true
+size = Vector3(0.743961, 0.984373, 0.65222)
+
+[node name="Floor" parent="Level BSP/Bedroom" instance=ExtResource("1_qlooj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.0013)
+
+[node name="Floor2" parent="Level BSP/Bedroom" instance=ExtResource("1_qlooj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00259, 0, 1.0013)
+
+[node name="Floor3" parent="Level BSP/Bedroom" instance=ExtResource("1_qlooj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.0013)
+
+[node name="Floor4" parent="Level BSP/Bedroom" instance=ExtResource("1_qlooj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00259, 0, -1.0013)
+
+[node name="Floor5" parent="Level BSP/Bedroom" instance=ExtResource("1_qlooj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.00778, 0, -5.00648)
+
+[node name="Floor6" parent="Level BSP/Bedroom" instance=ExtResource("1_qlooj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.00519, 0, -5.00648)
+
+[node name="Floor7" parent="Level BSP/Bedroom" instance=ExtResource("1_qlooj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.00778, 0, -7.00908)
+
+[node name="Floor8" parent="Level BSP/Bedroom" instance=ExtResource("1_qlooj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.00519, 0, -7.00908)
+
+[node name="Wall" parent="Level BSP/Bedroom" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.00519, 0, -5.00648)
+
+[node name="Wall2" parent="Level BSP/Bedroom" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.00519, 0, -7.00908)
+
+[node name="Wall3" parent="Level BSP/Bedroom" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.00778, 0, -7.00908)
+
+[node name="Wall4" parent="Level BSP/Bedroom" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.00778, 0, -5.00648)
+
+[node name="Wall5" parent="Level BSP/Bedroom" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 4.00519, 0, -7.00908)
+
+[node name="Wall6" parent="Level BSP/Bedroom" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 6.00778, 0, -7.00908)
+
+[node name="Wall7" parent="Level BSP/Bedroom" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 7.00908, 0, -5.00648)
+
+[node name="Wall8" parent="Level BSP/Bedroom" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 3.00389, 0, -5.00648)
+
+[node name="Celling" parent="Level BSP/Bedroom" instance=ExtResource("3_rs687")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.00519, 0, -7.00908)
+
+[node name="Celling2" parent="Level BSP/Bedroom" instance=ExtResource("3_rs687")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.00519, 0, -5.00648)
+
+[node name="Celling3" parent="Level BSP/Bedroom" instance=ExtResource("3_rs687")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.00778, 0, -5.00648)
+
+[node name="Celling4" parent="Level BSP/Bedroom" instance=ExtResource("3_rs687")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.00778, 0, -7.00908)
+
+[node name="ChildBedroom" type="Node3D" parent="Level BSP"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Level BSP/ChildBedroom"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.07228, 0.554238, -1.51058)
+size = Vector3(0.7, 1, 1.3)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Level BSP/ChildBedroom"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.63726, 0.554238, 1.05068)
+size = Vector3(1.5, 0.95, 0.5)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Level BSP/ChildBedroom"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.52946, 1.06438, 0.72652)
+size = Vector3(0.131201, 0.0518312, 0.131987)
+
+[node name="Door" parent="Level BSP/ChildBedroom" instance=ExtResource("3_tusux")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.0013, 0, 1.0013)
+
+[node name="Door2" parent="Level BSP/ChildBedroom" instance=ExtResource("3_tusux")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.00648, 0, -5.00648)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Level BSP/ChildBedroom"]
+transform = Transform3D(-0.537535, 0, 0.843241, 0, 1, 0, -0.843241, 0, -0.537535, -1.35512, 0.0702102, -0.0512894)
+size = Vector3(0.21, 0.002, 0.27)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Level BSP/ChildBedroom"]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0.400619, 0.307537, 1.33605)
+size = Vector3(0.753364, 0.47696, 0.5)
+
+[node name="Window" parent="Level BSP/ChildBedroom" instance=ExtResource("3_yyno1")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.0013, 0, -1.0013)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Level BSP/ChildBedroom"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0.301771, 0.924837, -1.22977)
+size = Vector3(0.753364, 1.64454, 0.603146)
+
+[node name="Wall14" parent="Level BSP/ChildBedroom" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(-1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 0, 0, -1.0013)
+
+[node name="Wall15" parent="Level BSP/ChildBedroom" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(-1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 0, 0, 1.0013)
+
+[node name="Wall24" parent="Level BSP/ChildBedroom" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(1, 0, 3.49691e-07, 0, 1, 0, -3.49691e-07, 0, 1, -2.00259, 0, 1.0013)
+
+[node name="Wall25" parent="Level BSP/ChildBedroom" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(1, 0, 3.49691e-07, 0, 1, 0, -3.49691e-07, 0, 1, -2.00259, 0, -1.0013)
+
+[node name="Wall26" parent="Level BSP/ChildBedroom" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, -3.00389, 0, -1.0013)
+
+[node name="Wall27" parent="Level BSP/ChildBedroom" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 1.0013, 0, -1.0013)
+
+[node name="Celling14" parent="Level BSP/ChildBedroom" instance=ExtResource("3_rs687")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.00259, 0, 1.0013)
+
+[node name="Celling15" parent="Level BSP/ChildBedroom" instance=ExtResource("3_rs687")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 1.0013)
+
+[node name="Celling16" parent="Level BSP/ChildBedroom" instance=ExtResource("3_rs687")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.00259, 0, -1.0013)
+
+[node name="Celling17" parent="Level BSP/ChildBedroom" instance=ExtResource("3_rs687")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -1.0013)
+
+[node name="Hallway" type="Node3D" parent="Level BSP"]
+
+[node name="Door2" parent="Level BSP/Hallway" instance=ExtResource("3_tusux")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00648, 0, 3.00389)
+
+[node name="Wall9" parent="Level BSP/Hallway" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.00648, 0, -3.00389)
+
+[node name="Wall10" parent="Level BSP/Hallway" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.00648, 0, -1.0013)
+
+[node name="Wall11" parent="Level BSP/Hallway" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.00648, 0, 1.0013)
+
+[node name="Wall30" parent="Level BSP/Hallway" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 5.00648, 0, 1.0013)
+
+[node name="Wall31" parent="Level BSP/Hallway" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 5.00648, 0, -1.0013)
+
+[node name="Wall12" parent="Level BSP/Hallway" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.00648, 0, 3.00389)
+
+[node name="Wall13" parent="Level BSP/Hallway" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 5.00648, 0, 3.00389)
+
+[node name="Wall17" parent="Level BSP/Hallway" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 3.00389, 0, 3.00389)
+
+[node name="Wall18" parent="Level BSP/Hallway" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 1.0013, 0, 3.00389)
+
+[node name="Wall19" parent="Level BSP/Hallway" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -1.0013, 0, 3.00389)
+
+[node name="Wall20" parent="Level BSP/Hallway" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -3.00389, 0, 3.00389)
+
+[node name="Wall21" parent="Level BSP/Hallway" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -5.00648, 0, 3.00389)
+
+[node name="Wall22" parent="Level BSP/Hallway" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, -5.00648, 0, 3.00389)
+
+[node name="Wall23" parent="Level BSP/Hallway" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, -3.00389, 0, 3.00389)
+
+[node name="Wall28" parent="Level BSP/Hallway" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 1.0013, 0, 3.00389)
+
+[node name="Wall29" parent="Level BSP/Hallway" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 3.00389, 0, 3.00389)
+
+[node name="Wall16" parent="Level BSP/Hallway" instance=ExtResource("2_1gvvl")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 5.00648, 0, -3.00389)
+
+[node name="Floor4" parent="Level BSP/Hallway" instance=ExtResource("1_qlooj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00648, 0, 3.00389)
+
+[node name="Floor5" parent="Level BSP/Hallway" instance=ExtResource("1_qlooj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00648, 0, 1.0013)
+
+[node name="Floor6" parent="Level BSP/Hallway" instance=ExtResource("1_qlooj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00648, 0, -1.0013)
+
+[node name="Floor7" parent="Level BSP/Hallway" instance=ExtResource("1_qlooj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00648, 0, -3.00389)
+
+[node name="Floor8" parent="Level BSP/Hallway" instance=ExtResource("1_qlooj")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.0013, 0, 3.00389)
+
+[node name="Floor12" parent="Level BSP/Hallway" instance=ExtResource("1_qlooj")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.00389, 0, 3.00389)
+
+[node name="Floor9" parent="Level BSP/Hallway" instance=ExtResource("1_qlooj")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.0013, 0, 3.00389)
+
+[node name="Floor10" parent="Level BSP/Hallway" instance=ExtResource("1_qlooj")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.00389, 0, 3.00389)
+
+[node name="Floor11" parent="Level BSP/Hallway" instance=ExtResource("1_qlooj")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.00648, 0, 3.00389)
+
+[node name="Celling5" parent="Level BSP/Hallway" instance=ExtResource("3_rs687")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00648, 0, -3.00389)
+
+[node name="Celling6" parent="Level BSP/Hallway" instance=ExtResource("3_rs687")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00648, 0, -1.0013)
+
+[node name="Celling7" parent="Level BSP/Hallway" instance=ExtResource("3_rs687")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00648, 0, 1.0013)
+
+[node name="Celling8" parent="Level BSP/Hallway" instance=ExtResource("3_rs687")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00648, 0, 3.00389)
+
+[node name="Celling9" parent="Level BSP/Hallway" instance=ExtResource("3_rs687")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.00389, 0, 3.00389)
+
+[node name="Celling10" parent="Level BSP/Hallway" instance=ExtResource("3_rs687")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.0013, 0, 3.00389)
+
+[node name="Celling11" parent="Level BSP/Hallway" instance=ExtResource("3_rs687")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.0013, 0, 3.00389)
+
+[node name="Celling12" parent="Level BSP/Hallway" instance=ExtResource("3_rs687")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.00389, 0, 3.00389)
+
+[node name="Celling13" parent="Level BSP/Hallway" instance=ExtResource("3_rs687")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.00648, 0, 3.00389)
+
+[node name="Door2" type="CSGBox3D" parent="Level BSP"]
+transform = Transform3D(-1, 0, 1.19364e-07, 0, 1, 0, -1.19364e-07, 0, -1, -1.73189, 1.09711, 1.51163)
+use_collision = true
+size = Vector3(0.12844, 1.99563, 0.891133)
+
+[node name="Door3" type="CSGBox3D" parent="Level BSP"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6.0142, 1.09711, 3.00172)
+use_collision = true
+size = Vector3(0.12844, 1.99563, 0.891133)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Level BSP"]
+transform = Transform3D(1.0013, 0, 0, 0, 1.0013, 0, 0, 0, 1.0013, 4.44029, 2.00412, 3.7853)
+light_color = Color(0.584314, 0.529412, 0.439216, 1)
+light_energy = 0.232
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Level BSP"]
+transform = Transform3D(1.0013, 0, 0, 0, 1.0013, 0, 0, 0, 1.0013, -0.566193, 2.00412, 3.7853)
+light_color = Color(0.584314, 0.529412, 0.439216, 1)
+light_energy = 0.232
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Level BSP"]
+transform = Transform3D(1.0013, 0, 0, 0, 1.0013, 0, 0, 0, 1.0013, -5.57268, 2.00412, 3.7853)
+light_color = Color(0.584314, 0.529412, 0.439216, 1)
+light_energy = 0.232
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Level BSP"]
+transform = Transform3D(1.0013, 0, 0, 0, 1.0013, 0, 0, 0, 1.0013, 3.33028, 1.52319, -4.5811)
+light_color = Color(0.584314, 0.529412, 0.439216, 1)
+light_energy = 0.232
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Level BSP"]
+transform = Transform3D(1.0013, 0, 0, 0, 1.0013, 0, 0, 0, 1.0013, -2.59155, 1.46361, 1.44027)
+light_color = Color(0.584314, 0.529412, 0.439216, 1)
+light_energy = 0.232
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Level BSP"]
+transform = Transform3D(0.997008, -0.0239608, -0.0894231, 0.00332459, -0.957288, 0.293571, -0.0925179, -0.292611, -0.953108, -2.08472, 1.68513, -3.35362)
+light_color = Color(0.619608, 0.705882, 0.819608, 1)
+light_energy = 0.256
+shadow_enabled = true
+
+[node name="Node3d" parent="." instance=ExtResource("6_p1jms")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 4.98247, 0.0599113, -6.84216)

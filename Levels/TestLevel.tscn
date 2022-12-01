@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://cdkaq35af3jx0"]
+
+[ext_resource type="PackedScene" uid="uid://c3i8poarpae43" path="res://Scenes/player.tscn" id="1_m4lvg"]
+[ext_resource type="PackedScene" uid="uid://dh0vsid6gfbvy" path="res://Scenes/Enemy.tscn" id="2_6syrt"]
+[ext_resource type="Script" path="res://Scripts/Surface.cs" id="3_o2b5v"]
+[ext_resource type="Resource" uid="uid://b4pswmuw0xa5s" path="res://Sounds/Concrete.tres" id="4_fci2h"]
+[ext_resource type="Resource" uid="uid://yfaqrw7aoh4g" path="res://Sounds/Wood.tres" id="5_2ym8j"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_0kjur"]
+vertices = PackedVector3Array(-7.01793, 0.423532, -1.60234, -4.51793, 0.423532, -1.60234, -4.26793, 0.423532, -2.85234, 4.23207, 0.423532, -2.85234, 4.48207, 0.423532, -1.60234, 6.98207, 0.423532, -1.60234, 6.98207, 0.423532, -7.10234, 4.23207, 0.423532, -2.85234, 6.98207, 0.423532, -7.10234, -0.0179281, 0.423532, -7.10234, -4.26793, 0.423532, -2.85234, -7.01793, 0.423532, -7.10234, -7.01793, 0.423532, -1.60234, -4.26793, 0.423532, -2.85234, -0.0179281, 0.423532, -7.10234, 6.98207, 0.423532, -1.60234, 4.48207, 0.423532, -1.60234, 4.23207, 0.423532, -0.602342, -4.26793, 0.423532, -0.602342, -4.51793, 0.423532, -1.60234, -7.01793, 0.423532, -1.60234, -7.01793, 0.423532, 7.14766, -4.26793, 0.423532, -0.602342, -7.01793, 0.423532, 7.14766, -0.0179281, 0.423532, 7.14766, 4.23207, 0.423532, -0.602342, 6.98207, 0.423532, 7.14766, 6.98207, 0.423532, -1.60234, 4.23207, 0.423532, -0.602342, -0.0179281, 0.423532, 7.14766)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 6), PackedInt32Array(8, 7, 9), PackedInt32Array(9, 7, 10), PackedInt32Array(12, 11, 13), PackedInt32Array(13, 11, 14), PackedInt32Array(17, 16, 15), PackedInt32Array(19, 18, 20), PackedInt32Array(20, 18, 21), PackedInt32Array(23, 22, 24), PackedInt32Array(24, 22, 25), PackedInt32Array(27, 26, 28), PackedInt32Array(28, 26, 29)]
+
+[sub_resource type="BoxMesh" id="BoxMesh_a2p5m"]
+
+[node name="TestLevel" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_m4lvg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.266209, 0)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0104218, 0.0260086, 0.00114202)
+navmesh = SubResource("NavigationMesh_0kjur")
+
+[node name="CsgBox3d" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0104218, -0.0260086, -0.00114202)
+use_collision = true
+size = Vector3(15.0567, 0.100918, 15.2024)
+
+[node name="CsgBox3d2" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0104218, 1.70603, -1.69383)
+use_collision = true
+size = Vector3(7.79511, 1, 1)
+
+[node name="Enemy" parent="." instance=ExtResource("2_6syrt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.05372, 0.0504589, -5.00918)
+
+[node name="Marker3D" type="Marker3D" parent="." groups=["EnemyWaypoint"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.08323, -9.53674e-07, -5.8881)
+
+[node name="Marker3D2" type="Marker3D" parent="." groups=["EnemyWaypoint"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.16284, -9.53674e-07, -5.8881)
+
+[node name="Marker3D3" type="Marker3D" parent="." groups=["EnemyWaypoint"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.87896, -9.53674e-07, 4.46215)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.321506, 0.946908, 0, -0.946908, 0.321506, 0, 3.90829, 0)
+shadow_enabled = true
+
+[node name="Wood" type="CSGMesh3D" parent="."]
+transform = Transform3D(3.32475, 0, 0, 0, 0.151193, 0, 0, 0, 3.74968, -2.54675, 0.0204204, 4.26682)
+use_collision = true
+mesh = SubResource("BoxMesh_a2p5m")
+script = ExtResource("3_o2b5v")
+SurfaceResource = ExtResource("5_2ym8j")
+
+[node name="Concrete" type="CSGMesh3D" parent="."]
+transform = Transform3D(3.32475, 0, 0, 0, 0.151193, 0, 0, 0, 3.74968, 1.27886, 0.0204204, 4.26682)
+use_collision = true
+mesh = SubResource("BoxMesh_a2p5m")
+script = ExtResource("3_o2b5v")
+SurfaceResource = ExtResource("4_fci2h")

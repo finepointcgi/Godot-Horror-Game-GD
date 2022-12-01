@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" uid="uid://be84hprsal7rp" path="res://Models/BlockOut/Window.glb" id="1_esmpk"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fn3e4"]
+points = PackedVector3Array(-1.07081, -0.0196254, -1.01963, -0.913822, 2.49243, 1.02142, -1.07081, 2.49243, 1.02142, -0.913822, -0.0196254, 1.02142, -0.913822, 2.49243, -1.01963, -1.07081, 2.49243, -1.01963, -1.07081, -0.0196254, 1.02142, -0.913822, -0.0196254, -1.01963)
+
+[node name="Window" instance=ExtResource("1_esmpk")]
+
+[node name="Window2" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_fn3e4")

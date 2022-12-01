@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" uid="uid://buqudj7xqeujf" path="res://Models/BlockOut/Slant Wall.glb" id="1_yio2u"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hx5hg"]
+points = PackedVector3Array(1.00947, 2.49243, -0.940909, -1.07083, -0.0196254, 0.942899, 0.616867, -0.0196254, -0.783875, 0.067267, -0.0196254, 0.0400538, -1.07083, 2.49243, 0.942899, -0.913623, 2.49243, 1.02142, 0.852264, 2.49243, -1.01963, 1.00947, -0.0196254, -0.940909, -0.913623, -0.0196254, 1.02142, 0.852264, -0.0196254, -1.01963, 0.067267, 2.49243, 0.0400538, 0.989464, 0.00452894, -1, -1.049, 2.46607, 1, 0.616867, 2.49243, -0.783875, 0.989464, 2.46827, -1, -1.049, 0.00673267, 1, -0.167927, 2.49243, 0.275605, -0.167927, -0.0196254, 0.275605, 0.655964, -0.0196254, -0.823233)
+
+[node name="Slant Wall" instance=ExtResource("1_yio2u")]
+
+[node name="Wall Slant" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_hx5hg")

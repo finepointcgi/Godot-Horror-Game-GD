@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" uid="uid://ccwu15qt74031" path="res://Models/BlockOut/Celling.glb" id="1_kjwmb"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_83xbp"]
+points = PackedVector3Array(1.01587, 2.4848, 1.01587, -1.01587, 2.35784, -1.01587, -1.01587, 2.35784, 1.01587, -1.01587, 2.4848, -1.01587, 1.01587, 2.35784, -1.01587, -1.01587, 2.4848, 1.01587, 1.01587, 2.35784, 1.01587, 1.01587, 2.4848, -1.01587)
+
+[node name="Celling" instance=ExtResource("1_kjwmb")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Celling2" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Celling2/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_83xbp")
