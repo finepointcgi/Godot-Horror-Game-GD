@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Godot Horror Game GD"
-run/main_scene="res://Scenes/TestScene.tscn"
+run/main_scene="res://Scenes/Level One WakeUp.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 

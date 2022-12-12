@@ -1,14 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqkn0qkhgqpl8"]
+[gd_scene load_steps=13 format=3 uid="uid://bqkn0qkhgqpl8"]
 
+[ext_resource type="Script" path="res://Scenes/LevelOneWakeUp.gd" id="1_4jddo"]
 [ext_resource type="PackedScene" path="res://Models/BlockOut/floor.tscn" id="1_qlooj"]
 [ext_resource type="PackedScene" path="res://Models/BlockOut/wall.tscn" id="2_1gvvl"]
 [ext_resource type="PackedScene" path="res://Models/BlockOut/celling.tscn" id="3_rs687"]
 [ext_resource type="PackedScene" path="res://Models/BlockOut/door.tscn" id="3_tusux"]
 [ext_resource type="PackedScene" path="res://Models/BlockOut/window.tscn" id="3_yyno1"]
+[ext_resource type="PackedScene" uid="uid://djkk5g8mcw1ib" path="res://Scenes/Door.tscn" id="6_g1h15"]
 [ext_resource type="PackedScene" uid="uid://06ceuxdcq6hd" path="res://Scenes/Character.tscn" id="6_p1jms"]
+[ext_resource type="PackedScene" uid="uid://4ihktpek0rvq" path="res://Scenes/e_generic_event.tscn" id="9_del3m"]
+[ext_resource type="AudioStream" uid="uid://3sjed1rqmgmq" path="res://Sounds/CreepyGirl Laugh.wav" id="10_u10cn"]
+[ext_resource type="AudioStream" uid="uid://bjveort5k5rn1" path="res://Sounds/366888__marissrar__creepy-ambience Looped.wav" id="11_obhkf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8iow2"]
+size = Vector3(0.644998, 1.89551, 2.3749)
 
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(0.998705, 0, 0, 0, 0.998705, 0, 0, 0, 0.998705, 0, 0, 0)
+script = ExtResource("1_4jddo")
 
 [node name="Level BSP" type="Node3D" parent="."]
 
@@ -269,37 +278,36 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.003
 [node name="Celling13" parent="Level BSP/Hallway" instance=ExtResource("3_rs687")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.00648, 0, 3.00389)
 
-[node name="Door2" type="CSGBox3D" parent="Level BSP"]
-transform = Transform3D(-1, 0, 1.19364e-07, 0, 1, 0, -1.19364e-07, 0, -1, -1.73189, 1.09711, 1.51163)
-use_collision = true
-size = Vector3(0.12844, 1.99563, 0.891133)
+[node name="ChildRoomDoor" parent="Level BSP" instance=ExtResource("6_g1h15")]
+unique_name_in_owner = true
+transform = Transform3D(-0.0131233, 0, 0.999914, 0, 1, 0, -0.999914, 0, -0.0131233, -1.4384, 1.097, 2.05076)
 
 [node name="Door3" type="CSGBox3D" parent="Level BSP"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6.0142, 1.09711, 3.00172)
 use_collision = true
 size = Vector3(0.12844, 1.99563, 0.891133)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Level BSP"]
+[node name="L_OmniLight3D" type="OmniLight3D" parent="Level BSP"]
 transform = Transform3D(1.0013, 0, 0, 0, 1.0013, 0, 0, 0, 1.0013, 4.44029, 2.00412, 3.7853)
 light_color = Color(0.584314, 0.529412, 0.439216, 1)
 light_energy = 0.232
 
-[node name="OmniLight3D4" type="OmniLight3D" parent="Level BSP"]
+[node name="L_OmniLight3D4" type="OmniLight3D" parent="Level BSP"]
 transform = Transform3D(1.0013, 0, 0, 0, 1.0013, 0, 0, 0, 1.0013, -0.566193, 2.00412, 3.7853)
 light_color = Color(0.584314, 0.529412, 0.439216, 1)
 light_energy = 0.232
 
-[node name="OmniLight3D5" type="OmniLight3D" parent="Level BSP"]
+[node name="L_OmniLight3D5" type="OmniLight3D" parent="Level BSP"]
 transform = Transform3D(1.0013, 0, 0, 0, 1.0013, 0, 0, 0, 1.0013, -5.57268, 2.00412, 3.7853)
 light_color = Color(0.584314, 0.529412, 0.439216, 1)
 light_energy = 0.232
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="Level BSP"]
+[node name="L_OmniLight3D2" type="OmniLight3D" parent="Level BSP"]
 transform = Transform3D(1.0013, 0, 0, 0, 1.0013, 0, 0, 0, 1.0013, 3.33028, 1.52319, -4.5811)
 light_color = Color(0.584314, 0.529412, 0.439216, 1)
 light_energy = 0.232
 
-[node name="OmniLight3D3" type="OmniLight3D" parent="Level BSP"]
+[node name="L_OmniLight3D3" type="OmniLight3D" parent="Level BSP"]
 transform = Transform3D(1.0013, 0, 0, 0, 1.0013, 0, 0, 0, 1.0013, -2.59155, 1.46361, 1.44027)
 light_color = Color(0.584314, 0.529412, 0.439216, 1)
 light_energy = 0.232
@@ -312,3 +320,24 @@ shadow_enabled = true
 
 [node name="Node3d" parent="." instance=ExtResource("6_p1jms")]
 transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 4.98247, 0.0599113, -6.84216)
+
+[node name="E_ChildDoorOpenSlow" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.18851, 0, 3.05565)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="E_ChildDoorOpenSlow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15351, 0)
+shape = SubResource("BoxShape3D_8iow2")
+
+[node name="E_ChildRoomPlayLaugh" parent="." instance=ExtResource("9_del3m")]
+AudioToPlay = ExtResource("10_u10cn")
+CanPlayMultipleTimes = true
+VolumeToPlayAtInDB = -10.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_obhkf")
+volume_db = -11.043
+autoplay = true
+
+[connection signal="body_entered" from="E_ChildDoorOpenSlow" to="." method="_on_e_child_door_open_slow_body_entered"]

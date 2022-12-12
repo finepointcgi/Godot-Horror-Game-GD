@@ -79,7 +79,7 @@ func MoveTowardsPoint(delta, speed):
 
 func CheckForPlayer():
 	var space_state = get_world_3d().direct_space_state
-	var result = space_state.intersect_ray(PhysicsRayQueryParameters3D.create($Head.global_position, player.get_node("Camera3d").global_position, 1, [self]))
+	var result = space_state.intersect_ray(PhysicsRayQueryParameters3D.create($Head.global_position, player.get_node("Camera3d").global_position, 1, [self.get_rid()]))
 	var isPlayerBehindWall : bool
 	if result.size() > 0:
 		if(result["collider"].is_in_group("Player")):

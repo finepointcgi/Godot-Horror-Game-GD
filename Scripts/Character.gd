@@ -55,7 +55,7 @@ func handleAnimation():
 				PhysicsRayQueryParameters3D.create(position, 
 				position + Vector3(0,2,0), 
 				1, 
-				[self]))
+				[self.get_rid()]))
 				
 			if crouchedResult.size() == 0:
 				$AnimationPlayer.play_backwards("Crouch")
@@ -141,7 +141,7 @@ func handleFlashLight():
 
 func getSurface() -> SurfaceObject:
 	var space_state = get_world_3d().direct_space_state
-	var surfaceResult = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(global_position + Vector3(0,1,0), global_position + Vector3(0,-1,0), 1, [self]))
+	var surfaceResult = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(global_position + Vector3(0,1,0), global_position + Vector3(0,-1,0), 1, [self.get_rid()]))
 	var surface : SurfaceObject = initSurfaceObject
 	
 	if surfaceResult.size() > 0:
@@ -159,4 +159,5 @@ func _input(event):
 
 
 func _on_sight_close_body_entered(body):
+	
 	pass # Replace with function body.

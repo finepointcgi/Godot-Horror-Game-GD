@@ -28,7 +28,7 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Arr
 
 [node name="Node3d" type="Node3D"]
 
-[node name="Node3d" parent="." groups=["Player"] instance=ExtResource("1_oj2yk")]
+[node name="Node3d" parent="." instance=ExtResource("1_oj2yk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94834, 0.0470677, 11.7273)
 
 [node name="Enemy" type="CharacterBody3D" parent="."]

@@ -305,7 +305,9 @@ _data = {
 "UnCrouch": SubResource("Animation_jgtwi")
 }
 
-[node name="Node3d" type="CharacterBody3D"]
+[node name="Node3d" type="CharacterBody3D" groups=["Player"]]
+collision_layer = 17
+collision_mask = 17
 script = ExtResource("1_qhnxo")
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="."]
@@ -325,7 +327,6 @@ shape = SubResource("CapsuleShape3D_vkoaf")
 [node name="Camera3d" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78661, -0.152885)
 current = true
-fov = 37.8493
 
 [node name="Marker3D" type="Marker3D" parent="Camera3d"]
 
