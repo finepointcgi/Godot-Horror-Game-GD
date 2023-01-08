@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://bqkn0qkhgqpl8"]
+[gd_scene load_steps=14 format=3 uid="uid://xsq18hg6u7pm"]
 
-[ext_resource type="Script" path="res://Scenes/LevelOneWakeUp.gd" id="1_4jddo"]
+[ext_resource type="Script" path="res://Scripts/LevelOneWakeUp.gd" id="1_4jddo"]
 [ext_resource type="PackedScene" path="res://Models/BlockOut/floor.tscn" id="1_qlooj"]
 [ext_resource type="PackedScene" path="res://Models/BlockOut/wall.tscn" id="2_1gvvl"]
 [ext_resource type="PackedScene" path="res://Models/BlockOut/celling.tscn" id="3_rs687"]
@@ -8,9 +8,10 @@
 [ext_resource type="PackedScene" path="res://Models/BlockOut/window.tscn" id="3_yyno1"]
 [ext_resource type="PackedScene" uid="uid://djkk5g8mcw1ib" path="res://Scenes/Door.tscn" id="6_g1h15"]
 [ext_resource type="PackedScene" uid="uid://06ceuxdcq6hd" path="res://Scenes/Character.tscn" id="6_p1jms"]
-[ext_resource type="PackedScene" uid="uid://4ihktpek0rvq" path="res://Scenes/e_generic_event.tscn" id="9_del3m"]
+[ext_resource type="PackedScene" path="res://Scenes/e_generic_event.tscn" id="9_del3m"]
 [ext_resource type="AudioStream" uid="uid://3sjed1rqmgmq" path="res://Sounds/CreepyGirl Laugh.wav" id="10_u10cn"]
 [ext_resource type="AudioStream" uid="uid://bjveort5k5rn1" path="res://Sounds/366888__marissrar__creepy-ambience Looped.wav" id="11_obhkf"]
+[ext_resource type="PackedScene" uid="uid://cuysggc8hov6" path="res://Scenes/grabbable_object.tscn" id="12_l4tgu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8iow2"]
 size = Vector3(0.644998, 1.89551, 2.3749)
@@ -339,5 +340,8 @@ VolumeToPlayAtInDB = -10.0
 stream = ExtResource("11_obhkf")
 volume_db = -11.043
 autoplay = true
+
+[node name="Grabbable Object" parent="." instance=ExtResource("12_l4tgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.29565, 1.0974, -4.79534)
 
 [connection signal="body_entered" from="E_ChildDoorOpenSlow" to="." method="_on_e_child_door_open_slow_body_entered"]

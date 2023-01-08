@@ -9,4 +9,5 @@ func _on_e_child_door_open_slow_body_entered(body):
 	if !E_childDoorOpenSlow:
 		get_node("%ChildRoomDoor").get_node("AnimationPlayer").play("DoorOpenSlow")
 		E_childDoorOpenSlow = true
+		get_node("%ChildRoomDoor").doorOpen = true
 	pass # Replace with function body.

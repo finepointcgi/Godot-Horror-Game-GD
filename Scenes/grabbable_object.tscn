@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuysggc8hov6"]
+
+[ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="1_qyth2"]
+[ext_resource type="Resource" uid="uid://c1y5m1r4ov76y" path="res://Sounds/GrabbableTestObject.tres" id="2_teoxx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mbk1d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_de15n"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="Grabbable Object" type="RigidBody3D"]
+collision_layer = 9
+collision_mask = 9
+max_contacts_reported = 2
+contact_monitor = true
+script = ExtResource("1_qyth2")
+GrabbableObjectResource = ExtResource("2_teoxx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("BoxMesh_mbk1d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_de15n")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]

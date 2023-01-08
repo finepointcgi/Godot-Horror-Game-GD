@@ -306,8 +306,8 @@ _data = {
 }
 
 [node name="Node3d" type="CharacterBody3D" groups=["Player"]]
-collision_layer = 17
-collision_mask = 17
+collision_layer = 25
+collision_mask = 25
 script = ExtResource("1_qhnxo")
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="."]
@@ -329,6 +329,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78661, -0.152885)
 current = true
 
 [node name="Marker3D" type="Marker3D" parent="Camera3d"]
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3d"]
+target_position = Vector3(0, 0, -1.2)
+collision_mask = 8
+
+[node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="Camera3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.952601)
+node_a = NodePath("StaticBody3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Camera3d/Generic6DOFJoint3D"]
+
+[node name="ResetObject" type="StaticBody3D" parent="Camera3d/Generic6DOFJoint3D"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

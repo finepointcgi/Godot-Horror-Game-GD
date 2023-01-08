@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://djkk5g8mcw1ib"]
+[gd_scene load_steps=13 format=3 uid="uid://djkk5g8mcw1ib"]
 
 [ext_resource type="AudioStream" uid="uid://b33ckbiq6764r" path="res://Sounds/DoorShut.wav" id="1_no44k"]
+[ext_resource type="Script" path="res://Scenes/Door.gd" id="1_wqxb5"]
 [ext_resource type="AudioStream" uid="uid://bfp1nejps445e" path="res://Sounds/151983__jpkweli__bedroom-door-shutting.wav" id="2_fqq7w"]
 [ext_resource type="AudioStream" uid="uid://b33sxgkuimsru" path="res://Sounds/Door Creek Slow.wav" id="3_irohh"]
 [ext_resource type="AudioStream" uid="uid://begj51vpdll5u" path="res://Sounds/Door Click Open Quick.wav" id="4_uab64"]
@@ -214,6 +215,9 @@ _data = {
 
 [node name="Door" type="StaticBody3D"]
 transform = Transform3D(-0.0131233, 0, 0.999914, 0, 1, 0, -0.999914, 0, -0.0131233, 0, 1.097, 0)
+collision_layer = 9
+collision_mask = 9
+script = ExtResource("1_wqxb5")
 
 [node name="Door2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 0.0112846, 0, 0.443537)

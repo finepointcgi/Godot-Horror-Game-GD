@@ -28,7 +28,7 @@ var playerInEarshotFar : bool
 var playerInEarshotClose : bool
 var playerInSightFar : bool
 var playerInSightClose : bool
-
+var soundObjects : Array
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	navigationAgent.set_target_location(waypoints[0].global_position)
@@ -37,7 +37,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
+	checkSoundObjectsForSound()
 	match currentState:
 		States.patrol:
 			if(navigationAgent.is_navigation_finished()):
@@ -96,20 +96,27 @@ func CheckForPlayer():
 				if(result["collider"].crouched == true) && result["collider"].LightLevel > FarCrouchedDetectionLightLevel:
 					currentState = States.hunting
 					navigationAgent.set_target_location(player.global_position)
-	
-	if isPlayerBehindWall:
-		player.NoiseValue = player.NoiseValue / 2
-	print(player.NoiseValue)
-	if(playerInEarshotClose) && player.NoiseValue / global_position.distance_to( player.global_position)  > CloseSoundDetectionLevel:
-		if(player.crouched == false):
+
+func checkSoundObjectsForSound():
+	for item in soundObjects:
+		if isSoundLoudEnough(checkIfBehindWall(item), item.NoiseValue, item.global_position):
 			currentState = States.hunting
-			
-	if(playerInEarshotFar) && player.NoiseValue / global_position.distance_to( player.global_position) > FarSoundDetectionLevel:
-		if(player.crouched == false):
-			currentState = States.hunting
-			navigationAgent.set_target_location(player.global_position)
-					
-	pass
+			navigationAgent.set_target_location(item.global_position)
+		
+func checkIfBehindWall(obj) -> bool:
+	var space_state = get_world_3d().direct_space_state
+	var result = space_state.intersect_ray(PhysicsRayQueryParameters3D.create($Head.global_position, obj.global_position, 1, [self.get_rid()]))
+	var isPlayerBehindWall : bool
+	if result.size() > 0:
+		return true
+	return false
+ 
+func isSoundLoudEnough(behindWall : bool, noise : float, positionOfNoise : Vector3) -> bool:
+	if behindWall:
+		noise = noise / 2
+	if (noise / global_position.distance_to(positionOfNoise)  > CloseSoundDetectionLevel) || (noise / global_position.distance_to(positionOfNoise) > FarSoundDetectionLevel):
+		return true
+	return false
 
 func faceDirection(direction : Vector3):
 	look_at(Vector3(direction.x, global_position.y, direction.z), Vector3.UP)
@@ -124,30 +131,26 @@ func _on_patrol_timer_timeout():
 
 
 func _on_hearing_far_body_entered(body):
-	if body.is_in_group("Player"):
-		playerInEarshotFar = true
-		print("Player is far in earshot")
+	if !soundObjects.has(body):
+		soundObjects.append(body)
 	pass # Replace with function body.
 
 
 func _on_hearing_far_body_exited(body):
-	if body.is_in_group("Player"):
-		playerInEarshotFar = false
-		print("Player has left far earshot")
+	if soundObjects.has(body):
+		soundObjects.remove_at(soundObjects.find(body))
 	pass # Replace with function body.
 
 
 func _on_hearing_close_body_entered(body):
-	if body.is_in_group("Player"):
-		playerInEarshotClose = true
-		print("Player is close in earshot")
+	if !soundObjects.has(body):
+		soundObjects.append(body)
 	pass # Replace with function body.
 
 
 func _on_hearing_close_body_exited(body):
-	if body.is_in_group("Player"):
-		playerInEarshotClose = false
-		print("Player has left close earshot")
+	if soundObjects.has(body):
+		soundObjects.remove_at(soundObjects.find(body))
 	pass # Replace with function body.
 
 

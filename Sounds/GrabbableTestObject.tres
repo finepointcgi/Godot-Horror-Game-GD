@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c1y5m1r4ov76y"]
+
+[ext_resource type="AudioStream" uid="uid://bwqorvptgstj0" path="res://Sounds/JumpLand.wav" id="1_yoc8m"]
+[ext_resource type="Script" path="res://Scripts/GrabbableObjectResource.gd" id="2_68t1t"]
+
+[resource]
+script = ExtResource("2_68t1t")
+HitSoundWAV = ExtResource("1_yoc8m")
+NoiseLevel = 10

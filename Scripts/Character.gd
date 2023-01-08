@@ -27,6 +27,8 @@ var initSurfaceObject : SurfaceObject
 
 var currentState := states.standing
 
+var grabbedObject : RigidBody3D
+
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	initSurfaceObject = SurfaceObject.new()
@@ -126,10 +128,24 @@ func getInput() -> Vector3:
 			currentState = states.crouching
 		else:
 			currentState = states.standing
+	
 	if(Input.is_action_just_pressed("Jump")) && is_on_floor():
 		currentState = states.jumping
+		
 	if(!is_on_floor()):
 		currentState = states.inAir
+		
+	if ($Camera3d/RayCast3D.is_colliding()):
+		var obj = $Camera3d/RayCast3D.get_collider()
+		if(Input.is_action_just_pressed("Interact")):
+			obj.Interact()
+	
+	if Input.is_action_just_pressed("Throw"):
+		if grabbedObject != null:
+			var temp = grabbedObject
+			GrabObject(grabbedObject)
+			temp.apply_impulse(($Camera3d.global_position - temp.global_position).normalized() * -1 * 5)
+	
 	return direction
 	
 func handleFlashLight():
@@ -157,7 +173,11 @@ func _input(event):
 		rotation.x = clamp(rotation.x, PI/-2, PI/2)
 		$Camera3d.rotation.x = clamp($Camera3d.rotation.x, -2, 2)
 
-
-func _on_sight_close_body_entered(body):
-	
-	pass # Replace with function body.
+func GrabObject(obj : RigidBody3D):
+	if grabbedObject == null:
+		grabbedObject = obj
+		$Camera3d/Generic6DOFJoint3D.node_b = obj.get_path()
+	else:
+		grabbedObject = null
+		$Camera3d/Generic6DOFJoint3D.node_b = $Camera3d/Generic6DOFJoint3D/ResetObject.get_path()
+		
