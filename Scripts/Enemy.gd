@@ -28,10 +28,12 @@ var playerInEarshotFar : bool
 var playerInEarshotClose : bool
 var playerInSightFar : bool
 var playerInSightClose : bool
-var soundObjects : Array
+var soundObjects = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	navigationAgent.set_target_location(waypoints[0].global_position)
+	print("test")
 	pass # Replace with function body.
 
 
@@ -53,7 +55,7 @@ func _process(delta):
 			navigationAgent.set_target_location(player.global_position)
 			MoveTowardsPoint(delta, chaseSpeed)
 			print("chasing player")
-			
+
 			pass
 		States.hunting:
 			if(navigationAgent.is_navigation_finished()):
@@ -98,10 +100,12 @@ func CheckForPlayer():
 					navigationAgent.set_target_location(player.global_position)
 
 func checkSoundObjectsForSound():
-	for item in soundObjects:
-		if isSoundLoudEnough(checkIfBehindWall(item), item.NoiseValue, item.global_position):
-			currentState = States.hunting
-			navigationAgent.set_target_location(item.global_position)
+#	if soundObjects != null:
+#		for item in soundObjects:
+#			if isSoundLoudEnough(checkIfBehindWall(item), item.NoiseValue, item.global_position):
+#				currentState = States.hunting
+#				navigationAgent.set_target_location(item.global_position)
+	pass
 		
 func checkIfBehindWall(obj) -> bool:
 	var space_state = get_world_3d().direct_space_state
@@ -128,7 +132,6 @@ func _on_patrol_timer_timeout():
 		waypointIndex = 0
 	navigationAgent.set_target_location(waypoints[waypointIndex].global_position)
 	pass # Replace with function body.
-
 
 func _on_hearing_far_body_entered(body):
 	if !soundObjects.has(body):

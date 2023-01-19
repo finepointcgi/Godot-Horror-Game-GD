@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://06ceuxdcq6hd"]
+[gd_scene load_steps=14 format=3 uid="uid://06ceuxdcq6hd"]
 
 [ext_resource type="Script" path="res://Scripts/Character.gd" id="1_qhnxo"]
 [ext_resource type="PackedScene" uid="uid://dq1ymde3c64tg" path="res://Scenes/light_detect.tscn" id="2_m11es"]
 [ext_resource type="PackedScene" uid="uid://6r38f2bb202o" path="res://Models/Lantern.blend" id="2_s3pd1"]
+[ext_resource type="PackedScene" uid="uid://bbc6aodw650sn" path="res://UI/inventory.tscn" id="4_g5owu"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_afdec"]
 
@@ -360,3 +361,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01928, 0)
 [node name="Jump" type="AudioStreamPlayer" parent="."]
 
 [node name="Footsteps" type="AudioStreamPlayer" parent="."]
+
+[node name="Inventory" parent="." instance=ExtResource("4_g5owu")]
+visible = false
+grow_horizontal = 2
+grow_vertical = 2

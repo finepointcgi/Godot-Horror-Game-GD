@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3 uid="uid://gacjukqwwi5s"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_rddcm"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fyuk4"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_t6uvv"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nd07g"]
+radius = 16.7665
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_neqmc"]
+radius = 3.46083
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qovmr"]
+points = PackedVector3Array(0, 1.59, 0, 7.5, 0, -6.2, -7.5, 0, -6.4, 0, 2, 0, 7.5, 2, -6.2, -7.5, 2, -6.4)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tcxad"]
+points = PackedVector3Array(0, 1.59, 0, 20, 0, -16, 20, 2, -16, 0, 2, 0, -20, 2, -16, -20, 0, -16)
+
+[node name="Enemy" type="CharacterBody3D"]
+transform = Transform3D(0.999101, 0, 0.0423989, 0, 1, 0, -0.0423989, 0, 0.999101, -3.53497, 0, -5.64924)
+script = ExtResource("1_rddcm")
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11734, 0)
+shape = SubResource("CapsuleShape3D_fyuk4")
+
+[node name="MeshInstance3d" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12522, 0)
+mesh = SubResource("CapsuleMesh_t6uvv")
+
+[node name="MeshInstance3d2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.06958e-08, 1.39698e-08, 0.251476, 0.244692, -4.9738e-14, 1.09923e-08, 0, 0.335219, -1.11759e-08, -0.0381799, 1.61302, -0.498618)
+mesh = SubResource("CapsuleMesh_t6uvv")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="PatrolTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="HearingFar" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HearingFar"]
+shape = SubResource("SphereShape3D_nd07g")
+
+[node name="HearingClose" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HearingClose"]
+shape = SubResource("SphereShape3D_neqmc")
+
+[node name="SightClose" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SightClose"]
+shape = SubResource("ConvexPolygonShape3D_qovmr")
+
+[node name="SightFar" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SightFar"]
+shape = SubResource("ConvexPolygonShape3D_tcxad")
+
+[node name="Head" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46375, 0)
+
+[connection signal="timeout" from="PatrolTimer" to="." method="_on_patrol_timer_timeout"]
+[connection signal="body_entered" from="HearingFar" to="." method="_on_hearing_far_body_entered"]
+[connection signal="body_exited" from="HearingFar" to="." method="_on_hearing_far_body_exited"]
+[connection signal="body_entered" from="HearingClose" to="." method="_on_hearing_close_body_entered"]
+[connection signal="body_exited" from="HearingClose" to="." method="_on_hearing_close_body_exited"]
+[connection signal="body_entered" from="SightClose" to="." method="_on_sight_close_body_entered"]
+[connection signal="body_exited" from="SightClose" to="." method="_on_sight_close_body_exited"]
+[connection signal="body_entered" from="SightFar" to="." method="_on_sight_far_body_entered"]
+[connection signal="body_exited" from="SightFar" to="." method="_on_sight_far_body_exited"]

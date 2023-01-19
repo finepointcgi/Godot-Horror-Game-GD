@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://o4c8uwy5fpxu"]
+
+[ext_resource type="Texture2D" uid="uid://dwrd2uv7au8hg" path="res://icon.svg" id="1_hffif"]
+[ext_resource type="Script" path="res://Scripts/Item.gd" id="1_klo07"]
+
+[resource]
+script = ExtResource("1_klo07")
+ID = null
+Name = "Test Item"
+ResourcePath = null
+Icon = ExtResource("1_hffif")
+Quantity = 2
+StackSize = 5
+IsStackable = true

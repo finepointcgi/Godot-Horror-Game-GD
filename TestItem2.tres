@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bigh3na66fs61"]
+
+[ext_resource type="Script" path="res://ItemTest2.gd" id="1_68dne"]
+
+[sub_resource type="Gradient" id="Gradient_wwxpb"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6e74j"]
+gradient = SubResource("Gradient_wwxpb")
+
+[resource]
+script = ExtResource("1_68dne")
+ID = 2
+Name = "Test Item 2"
+ResourcePath = null
+Icon = SubResource("GradientTexture1D_6e74j")
+Quantity = 1
+StackSize = 10
+IsStackable = true
