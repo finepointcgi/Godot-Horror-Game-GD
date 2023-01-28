@@ -1,7 +1,7 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://o4c8uwy5fpxu"]
+[gd_resource type="Resource" load_steps=3 format=3]
 
 [ext_resource type="Texture2D" uid="uid://dwrd2uv7au8hg" path="res://icon.svg" id="1_hffif"]
-[ext_resource type="Script" path="res://Scripts/Item.gd" id="1_klo07"]
+[ext_resource type="Script" path="res://addons/FPCGI/InventorySystem/Scripts/Item.gd" id="1_klo07"]
 
 [resource]
 script = ExtResource("1_klo07")
@@ -12,3 +12,4 @@ Icon = ExtResource("1_hffif")
 Quantity = 2
 StackSize = 5
 IsStackable = true
+Weight = 5.0

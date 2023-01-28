@@ -8,22 +8,6 @@
 
 config_version=5
 
-_global_script_classes=[{
-"base": "Resource",
-"class": &"Surface",
-"language": &"GDScript",
-"path": "res://Scripts/Surface.gd"
-}, {
-"base": "Node",
-"class": &"SurfaceObject",
-"language": &"GDScript",
-"path": "res://Scripts/SurfaceObject.gd"
-}]
-_global_script_class_icons={
-"Surface": "",
-"SurfaceObject": ""
-}
-
 [application]
 
 config/name="Godot Horror Game GD"
@@ -38,6 +22,10 @@ settings/stdout/verbose_stdout=true
 [dotnet]
 
 project/assembly_name="Godot Horror Game GD"
+
+[editor]
+
+export/convert_text_resources_to_binary=true
 
 [input]
 
