@@ -1,0 +1,3 @@
+[submodule "addons/FPCGI/InventorySystem"]
+	path = addons/FPCGI/InventorySystem
+	url = https://github.com/finepointcgi/InventorySystem.git
