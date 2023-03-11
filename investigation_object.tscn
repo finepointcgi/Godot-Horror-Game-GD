@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://cp7i7w5vorr4g"]
+
+[ext_resource type="Script" path="res://InvestigationObject.gd" id="1_83ica"]
+[ext_resource type="Script" path="res://InvestagationCamera.gd" id="2_a303f"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i1e8w"]
+
+[sub_resource type="Sky" id="Sky_wq2ml"]
+sky_material = SubResource("ProceduralSkyMaterial_i1e8w")
+
+[sub_resource type="Environment" id="Environment_ueayc"]
+background_mode = 1
+background_color = Color(0.2, 0.2, 0.2, 1)
+sky = SubResource("Sky_wq2ml")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="InvestigationObject" type="Node3D"]
+script = ExtResource("1_83ica")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ueayc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.985534, -0.042338, 0.164104, -0.0742144, 0.762707, 0.642472, -0.152364, -0.645357, 0.748532, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.99887)
+script = ExtResource("2_a303f")
+
+[node name="RotationAroundBase" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="RotationAroundBase"]
