@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6xa6f2bwwmy"]
+
+[ext_resource type="Script" path="res://InspectionObjectBase.gd" id="1_dudy2"]
+[ext_resource type="PackedScene" uid="uid://bphov6oawevft" path="res://sub_object.tscn" id="2_bgfca"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pf8yl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ajpsj"]
+
+[node name="InspectionObjectBase" type="CharacterBody3D"]
+script = ExtResource("1_dudy2")
+
+[node name="SubObject" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.512836)
+
+[node name="SubObject" parent="SubObject" instance=ExtResource("2_bgfca")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_pf8yl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ajpsj")

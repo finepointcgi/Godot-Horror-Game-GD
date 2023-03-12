@@ -34,3 +34,9 @@ func HideObject():
 	Utilities.removeChildren($RotationAroundBase)
 	hide()
 
+func FoundItem(item, item2remove):
+	ShowObject(item)
+	get_parent().Add(item)
+	get_parent().Remove(item2remove)
+	#$RotationObjectBase/KinematicBody.hide()
+	#$RotationObjectBase/InvestigationObject.global_position = Vector3(0,0,0)

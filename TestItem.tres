@@ -8,7 +8,7 @@
 script = ExtResource("1_klo07")
 ID = 0
 Name = "Test Item"
-ResourcePath = "res://Models/BlockOut/floor.tscn"
+ResourcePath = "res://inspection_object_base.tscn"
 Icon = ExtResource("1_hffif")
 Quantity = 2
 StackSize = 5
