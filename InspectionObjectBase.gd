@@ -7,7 +7,7 @@ func _ready():
 
 func Spawn(currentItem):
 	self.item = currentItem
-	if item.SubItem != null:
+	if item.SubItem != null && !item.SubItemFound:
 		var spawnedItem = ResourceLoader.load(currentItem.SubItem.ResourcePath).instantiate()
 		$SubObject.add_child(spawnedItem)
 		spawnedItem.get_node("Area3D").connect("mouse_entered", objectAreaEntered)
@@ -33,5 +33,6 @@ func objectAreaExited():
 	
 func Interact():
 	print("interacting")
-	emit_signal("FoundItem", item.SubItem, item)
+	item.SubItemFound = true
+	emit_signal("FoundItem", item.SubItem, item, item.AfterFoundBaseItem)
 	pass
