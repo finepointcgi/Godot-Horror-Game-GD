@@ -29,6 +29,8 @@ func ShowObject(item : Item):
 			var instance = ResourceLoader.load(item.ResourcePath).instantiate()
 			$RotationAroundBase.add_child(instance)
 			instance.global_position = Vector3.ZERO
+			instance.Spawn(item)
+			instance.connect("FoundItem", FoundItem)
 
 func HideObject():
 	Utilities.removeChildren($RotationAroundBase)

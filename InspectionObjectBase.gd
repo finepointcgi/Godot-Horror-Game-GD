@@ -3,13 +3,15 @@ var item : Item
 var overKey : bool
 signal FoundItem(item)
 func _ready():
-	if item.SubItem != null:
-		var item = ResourceLoader.load(item.SubItem.ResourcePath).instantiate()
-		$SubObject.add_child(item)
-		item.connect("mouse_entered", objectAreaEntered)
-		item.connect("mouse_exited", objectAreaExited)
 	pass # Replace with function body.
 
+func Spawn(currentItem):
+	self.item = currentItem
+	if item.SubItem != null:
+		var spawnedItem = ResourceLoader.load(currentItem.SubItem.ResourcePath).instantiate()
+		$SubObject.add_child(spawnedItem)
+		spawnedItem.get_node("Area3D").connect("mouse_entered", objectAreaEntered)
+		spawnedItem.get_node("Area3D").connect("mouse_exited", objectAreaExited)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -30,5 +32,6 @@ func objectAreaExited():
 	pass
 	
 func Interact():
-	emit_signal("FoundItem", item.SubItemPath, item)
+	print("interacting")
+	emit_signal("FoundItem", item.SubItem, item)
 	pass

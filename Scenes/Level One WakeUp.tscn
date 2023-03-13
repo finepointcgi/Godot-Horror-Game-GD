@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" path="res://Models/BlockOut/door.tscn" id="3_tusux"]
 [ext_resource type="PackedScene" path="res://Models/BlockOut/window.tscn" id="3_yyno1"]
 [ext_resource type="PackedScene" uid="uid://djkk5g8mcw1ib" path="res://Scenes/Door.tscn" id="6_g1h15"]
-[ext_resource type="PackedScene" uid="uid://06ceuxdcq6hd" path="res://Scenes/Character.tscn" id="6_p1jms"]
+[ext_resource type="PackedScene" uid="uid://b6kiqp72nmw4m" path="res://Scenes/Character.tscn" id="6_p1jms"]
 [ext_resource type="PackedScene" path="res://Scenes/e_generic_event.tscn" id="9_del3m"]
 [ext_resource type="AudioStream" uid="uid://3sjed1rqmgmq" path="res://Sounds/CreepyGirl Laugh.wav" id="10_u10cn"]
 [ext_resource type="AudioStream" uid="uid://bjveort5k5rn1" path="res://Sounds/366888__marissrar__creepy-ambience Looped.wav" id="11_obhkf"]
