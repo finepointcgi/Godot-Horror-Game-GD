@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Character.gd" id="1_qhnxo"]
 [ext_resource type="PackedScene" uid="uid://dq1ymde3c64tg" path="res://Scenes/light_detect.tscn" id="2_m11es"]
 [ext_resource type="PackedScene" uid="uid://6r38f2bb202o" path="res://Models/Lantern.blend" id="2_s3pd1"]
-[ext_resource type="PackedScene" uid="uid://70nejgrvd3hi" path="res://addons/FPCGI/InventorySystem/Scenes/inventory.tscn" id="4_g5owu"]
+[ext_resource type="PackedScene" uid="uid://dkv67e3txwrtt" path="res://addons/FPCGI/InventorySystem/Scenes/inventory.tscn" id="4_g5owu"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_afdec"]
 

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1tci5fn3jk6a"]
+
+[ext_resource type="Script" path="res://addons/FPCGI/InventorySystem/InspectionObject.gd" id="1_esieb"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2blq5"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ihvcd"]
+radius = 0.25619
+height = 0.971179
+
+[node name="SubObject" type="CharacterBody3D"]
+script = ExtResource("1_esieb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.476929, 0, 0, 0, -2.08472e-08, 0.476929, 0, -0.476929, -2.08472e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_2blq5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_ihvcd")
