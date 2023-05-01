@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://xsq18hg6u7pm"]
+[gd_scene load_steps=16 format=3 uid="uid://xsq18hg6u7pm"]
 
 [ext_resource type="Script" path="res://Scripts/LevelOneWakeUp.gd" id="1_4jddo"]
 [ext_resource type="PackedScene" path="res://Models/BlockOut/floor.tscn" id="1_qlooj"]
@@ -8,10 +8,14 @@
 [ext_resource type="PackedScene" path="res://Models/BlockOut/window.tscn" id="3_yyno1"]
 [ext_resource type="PackedScene" uid="uid://djkk5g8mcw1ib" path="res://Scenes/Door.tscn" id="6_g1h15"]
 [ext_resource type="PackedScene" uid="uid://b6kiqp72nmw4m" path="res://Scenes/Character.tscn" id="6_p1jms"]
+[ext_resource type="Script" path="res://Scenes/LoadLevelInteractable.gd" id="8_b1qph"]
 [ext_resource type="PackedScene" path="res://Scenes/e_generic_event.tscn" id="9_del3m"]
 [ext_resource type="AudioStream" uid="uid://3sjed1rqmgmq" path="res://Sounds/CreepyGirl Laugh.wav" id="10_u10cn"]
 [ext_resource type="AudioStream" uid="uid://bjveort5k5rn1" path="res://Sounds/366888__marissrar__creepy-ambience Looped.wav" id="11_obhkf"]
 [ext_resource type="PackedScene" uid="uid://cuysggc8hov6" path="res://Scenes/grabbable_object.tscn" id="12_l4tgu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j8yjj"]
+size = Vector3(0.141812, 2.01605, 0.922014)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8iow2"]
 size = Vector3(0.644998, 1.89551, 2.3749)
@@ -283,10 +287,19 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.006
 unique_name_in_owner = true
 transform = Transform3D(-0.0131233, 0, 0.999914, 0, 1, 0, -0.999914, 0, -0.0131233, -1.4384, 1.097, 2.05076)
 
-[node name="Door3" type="CSGBox3D" parent="Level BSP"]
+[node name="LoadLevelInteractable" type="StaticBody3D" parent="Level BSP"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6.0142, 1.09711, 3.00172)
+collision_layer = 9
+collision_mask = 9
+script = ExtResource("8_b1qph")
+LevelPath = "res://Scenes/Level One WakeUp.tscn"
+
+[node name="Door3" type="CSGBox3D" parent="Level BSP/LoadLevelInteractable"]
 use_collision = true
 size = Vector3(0.12844, 1.99563, 0.891133)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level BSP/LoadLevelInteractable"]
+shape = SubResource("BoxShape3D_j8yjj")
 
 [node name="L_OmniLight3D" type="OmniLight3D" parent="Level BSP"]
 transform = Transform3D(1.0013, 0, 0, 0, 1.0013, 0, 0, 0, 1.0013, 4.44029, 2.00412, 3.7853)

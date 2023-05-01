@@ -9,9 +9,10 @@ func _ready():
 	pass # Replace with function body.
 
 func BodyEntered(body):
-	$AudioStreamPlayer3D.stream = GrabbableObjectResource.HitSoundWAV
-	$AudioStreamPlayer3D.play()
-	NoiseValue = GrabbableObjectResource.NoiseLevel
+	if GrabbableObjectResource.HitSoundWAV != null:
+		$AudioStreamPlayer3D.stream = GrabbableObjectResource.HitSoundWAV
+		$AudioStreamPlayer3D.play()
+		NoiseValue = GrabbableObjectResource.NoiseLevel
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
