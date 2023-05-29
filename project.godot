@@ -28,6 +28,10 @@ settings/stdout/verbose_stdout=true
 
 project/assembly_name="Godot Horror Game GD"
 
+[editor]
+
+naming/scene_name_casing=1
+
 [input]
 
 MoveLeft={

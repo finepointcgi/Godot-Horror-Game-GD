@@ -5,6 +5,7 @@ var path : String
 var waitForInput : bool
 var inputKeyPressed : bool
 @export var  tips : Array[String]
+var Index : int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -29,8 +30,8 @@ func _input(event):
 	if waitForInput:
 		if event is InputEventKey:
 			if inputKeyPressed:
-				pass
-				#ChangeScene(ResourceLoader.load_threaded_get(path))
+				waitForInput = false
+				ChangeScene(ResourceLoader.load_threaded_get(path))
 			if !event.pressed:
 				inputKeyPressed = false
 			else:
@@ -38,24 +39,25 @@ func _input(event):
 
 func ChangeScene(resource : PackedScene):
 	var currentNode = resource.instantiate()
-	get_tree().root.add_child(currentNode)
-	
-	for item in get_tree().root.get_children():
-		if item.get_class() == "Node3D" && item != currentNode:
-			get_tree().root.remove_child(item)
+	get_tree().get_nodes_in_group("LevelBase")[0].add_child(currentNode)
+	for item in get_tree().get_nodes_in_group("LevelBase")[0].get_children():
+		if item != currentNode:
+			get_tree().get_nodes_in_group("LevelBase")[0].remove_child(item)
 			item.queue_free()
+	GameManager.MovePlayer(Index)
 	queue_free()
 	
-func loadLevel(path : String):
+func loadLevel(path : String, index : int):
 	self.path = path
 	show()
+	Index = index
 	if tips.size() != 0:
 		$Control/VBoxContainer2/TipValue.text = tips[randi() % tips.size()]
 	var items : PackedStringArray = path.split("/")
 	var levelname = items[items.size() - 1].split(".")
 	$Control/VBoxContainer/LevelName.text = levelname[0]
 	if(ResourceLoader.has_cached(path)):
-		ResourceLoader.load_threaded_get(path)
+		ChangeScene(ResourceLoader.load_threaded_get(path))
 	else:
 		ResourceLoader.load_threaded_request(path, "", true)
 		loading = true

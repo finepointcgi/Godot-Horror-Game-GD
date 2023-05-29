@@ -1,0 +1,201 @@
+[gd_scene load_steps=11 format=3 uid="uid://d3bh3aovem2ag"]
+
+[ext_resource type="Script" path="res://Scripts/LevelOneWakeUp.gd" id="1_vyl3j"]
+[ext_resource type="PackedScene" path="res://Models/BlockOut/floor.tscn" id="2_gv2qw"]
+[ext_resource type="PackedScene" path="res://Models/BlockOut/wall.tscn" id="3_bulyv"]
+[ext_resource type="PackedScene" path="res://Models/BlockOut/door.tscn" id="5_cehh6"]
+[ext_resource type="Script" path="res://Scenes/LoadLevelInteractable.gd" id="8_j7q8t"]
+[ext_resource type="Script" path="res://Scenes/SpawnIndex.gd" id="9_3c21i"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bvit4"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_fdjm0"]
+sky_material = SubResource("ProceduralSkyMaterial_bvit4")
+
+[sub_resource type="Environment" id="Environment_cumd7"]
+background_mode = 2
+sky = SubResource("Sky_fdjm0")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j8yjj"]
+size = Vector3(0.141812, 2.01605, 0.922014)
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(0.998705, 0, 0, 0, 0.998705, 0, 0, 0, 0.998705, 0, 0, 0)
+script = ExtResource("1_vyl3j")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cumd7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Level BSP" type="Node3D" parent="."]
+
+[node name="Door2" parent="Level BSP" instance=ExtResource("5_cehh6")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Door4" parent="Level BSP" instance=ExtResource("5_cehh6")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -16.0207, 0, 0)
+
+[node name="Door3" parent="Level BSP" instance=ExtResource("5_cehh6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.01037, 0, 4.00519)
+
+[node name="Floor" parent="Level BSP" instance=ExtResource("2_gv2qw")]
+
+[node name="Floor2" parent="Level BSP" instance=ExtResource("2_gv2qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00259, 0, 0)
+
+[node name="Floor3" parent="Level BSP" instance=ExtResource("2_gv2qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.00519, 0, 0)
+
+[node name="Floor4" parent="Level BSP" instance=ExtResource("2_gv2qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.00519, 0, 2.00259)
+
+[node name="Floor5" parent="Level BSP" instance=ExtResource("2_gv2qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.00778, 0, 0)
+
+[node name="Floor6" parent="Level BSP" instance=ExtResource("2_gv2qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.00778, 0, 2.00259)
+
+[node name="Floor7" parent="Level BSP" instance=ExtResource("2_gv2qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.01037, 0, 0)
+
+[node name="Floor8" parent="Level BSP" instance=ExtResource("2_gv2qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.01037, 0, 2.00259)
+
+[node name="Floor11" parent="Level BSP" instance=ExtResource("2_gv2qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.00778, 0, 4.00519)
+
+[node name="Floor12" parent="Level BSP" instance=ExtResource("2_gv2qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.01037, 0, 4.00519)
+
+[node name="Floor9" parent="Level BSP" instance=ExtResource("2_gv2qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.013, 0, 0)
+
+[node name="Floor13" parent="Level BSP" instance=ExtResource("2_gv2qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0156, 0, 0)
+
+[node name="Floor14" parent="Level BSP" instance=ExtResource("2_gv2qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0182, 0, 0)
+
+[node name="Floor10" parent="Level BSP" instance=ExtResource("2_gv2qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.013, 0, 2.00259)
+
+[node name="Wall" parent="Level BSP" instance=ExtResource("3_bulyv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Wall2" parent="Level BSP" instance=ExtResource("3_bulyv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.00259, 0, 0)
+
+[node name="Wall7" parent="Level BSP" instance=ExtResource("3_bulyv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -2.00259)
+
+[node name="Wall8" parent="Level BSP" instance=ExtResource("3_bulyv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.00259, 0, -2.00259)
+
+[node name="Wall9" parent="Level BSP" instance=ExtResource("3_bulyv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.00519, 0, -2.00259)
+
+[node name="Wall10" parent="Level BSP" instance=ExtResource("3_bulyv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.00778, 0, -2.00259)
+
+[node name="Wall11" parent="Level BSP" instance=ExtResource("3_bulyv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.01037, 0, -2.00259)
+
+[node name="Wall12" parent="Level BSP" instance=ExtResource("3_bulyv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.013, 0, -2.00259)
+
+[node name="Wall13" parent="Level BSP" instance=ExtResource("3_bulyv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.0156, 0, -2.00259)
+
+[node name="Wall14" parent="Level BSP" instance=ExtResource("3_bulyv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.0182, 0, -2.00259)
+
+[node name="Wall15" parent="Level BSP" instance=ExtResource("3_bulyv")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12.0156, 0, 2.00259)
+
+[node name="Wall16" parent="Level BSP" instance=ExtResource("3_bulyv")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -10.013, 0, 4.00519)
+
+[node name="Wall17" parent="Level BSP" instance=ExtResource("3_bulyv")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -14.0182, 0, 2.00259)
+
+[node name="Wall18" parent="Level BSP" instance=ExtResource("3_bulyv")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -12.0156, 0, 2.00259)
+
+[node name="Wall19" parent="Level BSP" instance=ExtResource("3_bulyv")]
+transform = Transform3D(-0.999994, 0, -0.00349059, 0, 1, 0, 0.00349059, 0, -0.999994, -10.013, 0, 4.00519)
+
+[node name="Wall3" parent="Level BSP" instance=ExtResource("3_bulyv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.00519, 0, 2.00259)
+
+[node name="Wall5" parent="Level BSP" instance=ExtResource("3_bulyv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.00778, 0, 4.00519)
+
+[node name="Wall6" parent="Level BSP" instance=ExtResource("3_bulyv")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.00778, 0, 4.00519)
+
+[node name="Wall4" parent="Level BSP" instance=ExtResource("3_bulyv")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.00519, 0, 2.00259)
+
+[node name="LoadLevelInteractable" type="StaticBody3D" parent="Level BSP"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.00757, 1.10219, 0)
+collision_layer = 9
+collision_mask = 9
+script = ExtResource("8_j7q8t")
+LevelPath = "res://Scenes/Level One WakeUp.tscn"
+
+[node name="Door3" type="CSGBox3D" parent="Level BSP/LoadLevelInteractable"]
+use_collision = true
+size = Vector3(0.12844, 1.99563, 0.891133)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level BSP/LoadLevelInteractable"]
+shape = SubResource("BoxShape3D_j8yjj")
+
+[node name="SpawnIndex" type="Node3D" parent="Level BSP/LoadLevelInteractable" groups=["SpawnIndex"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.850373, -0.941385, 0.0133068)
+script = ExtResource("9_3c21i")
+SpawnIndex = 1
+
+[node name="LoadLevelInteractable2" type="StaticBody3D" parent="Level BSP"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -15.0132, 1.0741, 0)
+collision_layer = 9
+collision_mask = 9
+script = ExtResource("8_j7q8t")
+LevelPath = "res://Scenes/Level One WakeUp.tscn"
+
+[node name="Door3" type="CSGBox3D" parent="Level BSP/LoadLevelInteractable2"]
+use_collision = true
+size = Vector3(0.12844, 1.99563, 0.891133)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level BSP/LoadLevelInteractable2"]
+shape = SubResource("BoxShape3D_j8yjj")
+
+[node name="SpawnIndex" type="Node3D" parent="Level BSP/LoadLevelInteractable2" groups=["SpawnIndex"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.663625, -0.941385, -0.020583)
+script = ExtResource("9_3c21i")
+SpawnIndex = 2
+
+[node name="LoadLevelInteractable3" type="StaticBody3D" parent="Level BSP"]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -8.0041, 1.05503, 5.00648)
+collision_layer = 9
+collision_mask = 9
+script = ExtResource("8_j7q8t")
+LevelPath = "res://Scenes/Level One WakeUp.tscn"
+
+[node name="Door3" type="CSGBox3D" parent="Level BSP/LoadLevelInteractable3"]
+use_collision = true
+size = Vector3(0.12844, 1.99563, 0.891133)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level BSP/LoadLevelInteractable3"]
+shape = SubResource("BoxShape3D_j8yjj")
+
+[node name="SpawnIndex" type="Node3D" parent="Level BSP/LoadLevelInteractable3" groups=["SpawnIndex"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.977284, -0.985883, -0.0862713)
+script = ExtResource("9_3c21i")
+SpawnIndex = 3

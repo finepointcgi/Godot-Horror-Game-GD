@@ -30,6 +30,7 @@ var currentState := states.standing
 var grabbedObject : RigidBody3D
 
 func _ready():
+	GameManager.Player = self
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	initSurfaceObject = SurfaceObject.new()
 	initSurfaceObject.SurfaceResource = ResourceLoader.load("res://Sounds/Wood.tres")

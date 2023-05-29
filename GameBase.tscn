@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3g6l8y74q3kp"]
+
+[ext_resource type="Script" path="res://LevelBase.gd" id="1_wj8h7"]
+[ext_resource type="PackedScene" uid="uid://drekry47fcjgd" path="res://MainMenu.tscn" id="2_xx860"]
+
+[node name="Node" type="Node"]
+
+[node name="LevelBase" type="Node" parent="." groups=["LevelBase"]]
+script = ExtResource("1_wj8h7")
+
+[node name="Control" parent="LevelBase" instance=ExtResource("2_xx860")]
+
+[node name="Player" type="Node" parent="." groups=["PlayerParent"]]

@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" path="res://Models/BlockOut/door.tscn" id="3_tusux"]
 [ext_resource type="PackedScene" path="res://Models/BlockOut/window.tscn" id="3_yyno1"]
 [ext_resource type="PackedScene" uid="uid://djkk5g8mcw1ib" path="res://Scenes/Door.tscn" id="6_g1h15"]
-[ext_resource type="PackedScene" uid="uid://b6kiqp72nmw4m" path="res://Scenes/Character.tscn" id="6_p1jms"]
 [ext_resource type="Script" path="res://Scenes/LoadLevelInteractable.gd" id="8_b1qph"]
+[ext_resource type="Script" path="res://Scenes/SpawnIndex.gd" id="9_3vdfv"]
 [ext_resource type="PackedScene" path="res://Scenes/e_generic_event.tscn" id="9_del3m"]
 [ext_resource type="AudioStream" uid="uid://3sjed1rqmgmq" path="res://Sounds/CreepyGirl Laugh.wav" id="10_u10cn"]
 [ext_resource type="AudioStream" uid="uid://bjveort5k5rn1" path="res://Sounds/366888__marissrar__creepy-ambience Looped.wav" id="11_obhkf"]
@@ -292,7 +292,8 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6.014
 collision_layer = 9
 collision_mask = 9
 script = ExtResource("8_b1qph")
-LevelPath = "res://Scenes/Level One WakeUp.tscn"
+LevelPath = "res://Scenes/Level Two ManorBase.tscn"
+InstanceIndex = 1
 
 [node name="Door3" type="CSGBox3D" parent="Level BSP/LoadLevelInteractable"]
 use_collision = true
@@ -300,6 +301,11 @@ size = Vector3(0.12844, 1.99563, 0.891133)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level BSP/LoadLevelInteractable"]
 shape = SubResource("BoxShape3D_j8yjj")
+
+[node name="SpawnIndex2" type="Node3D" parent="Level BSP/LoadLevelInteractable" groups=["SpawnIndex"]]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.482931, -1.0372, -0.0221887)
+script = ExtResource("9_3vdfv")
+SpawnIndex = 1
 
 [node name="L_OmniLight3D" type="OmniLight3D" parent="Level BSP"]
 transform = Transform3D(1.0013, 0, 0, 0, 1.0013, 0, 0, 0, 1.0013, 4.44029, 2.00412, 3.7853)
@@ -332,8 +338,9 @@ light_color = Color(0.619608, 0.705882, 0.819608, 1)
 light_energy = 0.256
 shadow_enabled = true
 
-[node name="Node3d" parent="." instance=ExtResource("6_p1jms")]
-transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 4.98247, 0.0599113, -6.84216)
+[node name="SpawnIndex" type="Node3D" parent="." groups=["SpawnIndex"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.98247, 0.0599113, -6.84216)
+script = ExtResource("9_3vdfv")
 
 [node name="E_ChildDoorOpenSlow" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.18851, 0, 3.05565)
