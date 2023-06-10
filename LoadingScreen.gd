@@ -4,6 +4,7 @@ var loading : bool
 var path : String
 var waitForInput : bool
 var inputKeyPressed : bool
+var spawnIndex : int
 @export var  tips : Array[String]
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,8 +30,7 @@ func _input(event):
 	if waitForInput:
 		if event is InputEventKey:
 			if inputKeyPressed:
-				pass
-				#ChangeScene(ResourceLoader.load_threaded_get(path))
+				ChangeScene(ResourceLoader.load_threaded_get(path))
 			if !event.pressed:
 				inputKeyPressed = false
 			else:
@@ -38,16 +38,19 @@ func _input(event):
 
 func ChangeScene(resource : PackedScene):
 	var currentNode = resource.instantiate()
-	get_tree().root.add_child(currentNode)
+	GameManager.LevelBase.add_child(currentNode)
 	
-	for item in get_tree().root.get_children():
-		if item.get_class() == "Node3D" && item != currentNode:
-			get_tree().root.remove_child(item)
+	for item in GameManager.LevelBase.get_children():
+		if item != currentNode:
+			GameManager.LevelBase.remove_child(item)
 			item.queue_free()
+	GameManager.CheckForPlayer()
+	GameManager.MovePlayer(spawnIndex)
 	queue_free()
 	
-func loadLevel(path : String):
+func LoadLevel(path : String, spawnIndex : int):
 	self.path = path
+	self.spawnIndex = spawnIndex
 	show()
 	if tips.size() != 0:
 		$Control/VBoxContainer2/TipValue.text = tips[randi() % tips.size()]

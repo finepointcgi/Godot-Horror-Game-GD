@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://781w8n1rx31e"]
+
+[ext_resource type="PackedScene" uid="uid://drekry47fcjgd" path="res://MainMenu.tscn" id="1_4oarb"]
+
+[sub_resource type="GDScript" id="GDScript_sg5ja"]
+script/source = "extends Node
+
+
+func _ready():
+	GameManager.LevelBase = self
+"
+
+[node name="BaseGame" type="Node"]
+
+[node name="LevelBase" type="Node" parent="."]
+script = SubResource("GDScript_sg5ja")
+
+[node name="Control" parent="LevelBase" instance=ExtResource("1_4oarb")]
+
+[node name="Player" type="Node" parent="." groups=["PlayerParent"]]

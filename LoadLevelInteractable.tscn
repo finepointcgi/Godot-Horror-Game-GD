@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://246mf41aeyy7"]
+
+[ext_resource type="Script" path="res://Scenes/LoadLevelInteractable.gd" id="1_g7p0o"]
+[ext_resource type="PackedScene" uid="uid://km7ulq4cncpn" path="res://SpawnIndex.tscn" id="2_11mpe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j8yjj"]
+size = Vector3(0.141812, 2.01605, 0.922014)
+
+[node name="LoadLevelInteractable" type="StaticBody3D"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1, 0)
+collision_layer = 9
+collision_mask = 9
+script = ExtResource("1_g7p0o")
+LevelPath = "res://Scenes/Level One WakeUp.tscn"
+LocalIndex = 1
+
+[node name="Door3" type="CSGBox3D" parent="."]
+use_collision = true
+size = Vector3(0.12844, 1.99563, 0.891133)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_j8yjj")
+
+[node name="SpawnIndex" parent="." instance=ExtResource("2_11mpe")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, -1, 8.74228e-08)

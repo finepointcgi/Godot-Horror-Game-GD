@@ -1,0 +1,156 @@
+[gd_scene load_steps=6 format=3 uid="uid://mm46eh4jkxvr"]
+
+[ext_resource type="PackedScene" path="res://Models/BlockOut/door.tscn" id="1_vefow"]
+[ext_resource type="PackedScene" path="res://Models/BlockOut/wall.tscn" id="2_173ik"]
+[ext_resource type="PackedScene" path="res://Models/BlockOut/floor.tscn" id="3_m17li"]
+[ext_resource type="PackedScene" path="res://Models/BlockOut/celling.tscn" id="4_eo2c8"]
+[ext_resource type="PackedScene" uid="uid://246mf41aeyy7" path="res://LoadLevelInteractable.tscn" id="5_i5hsr"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Level BSP" type="Node3D" parent="."]
+
+[node name="Hallway" type="Node3D" parent="Level BSP"]
+
+[node name="Door2" parent="Level BSP/Hallway" instance=ExtResource("1_vefow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00648, 0, 3.00389)
+
+[node name="Door3" parent="Level BSP/Hallway" instance=ExtResource("1_vefow")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.99352, 0, -2.99611)
+
+[node name="Wall9" parent="Level BSP/Hallway" instance=ExtResource("2_173ik")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.00648, 0, -3.00389)
+
+[node name="Wall10" parent="Level BSP/Hallway" instance=ExtResource("2_173ik")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.00648, 0, -1.0013)
+
+[node name="Wall11" parent="Level BSP/Hallway" instance=ExtResource("2_173ik")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.00648, 0, 1.0013)
+
+[node name="Wall30" parent="Level BSP/Hallway" instance=ExtResource("2_173ik")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 5.00648, 0, 1.0013)
+
+[node name="Wall31" parent="Level BSP/Hallway" instance=ExtResource("2_173ik")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 5.00648, 0, -1.0013)
+
+[node name="Wall12" parent="Level BSP/Hallway" instance=ExtResource("2_173ik")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.00648, 0, 3.00389)
+
+[node name="Wall13" parent="Level BSP/Hallway" instance=ExtResource("2_173ik")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 5.00648, 0, 3.00389)
+
+[node name="Wall17" parent="Level BSP/Hallway" instance=ExtResource("2_173ik")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 3.00389, 0, 3.00389)
+
+[node name="Wall18" parent="Level BSP/Hallway" instance=ExtResource("2_173ik")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 1.0013, 0, 3.00389)
+
+[node name="Wall19" parent="Level BSP/Hallway" instance=ExtResource("2_173ik")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -1.0013, 0, 3.00389)
+
+[node name="Wall20" parent="Level BSP/Hallway" instance=ExtResource("2_173ik")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -3.00389, 0, 3.00389)
+
+[node name="Wall21" parent="Level BSP/Hallway" instance=ExtResource("2_173ik")]
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -5.00648, 0, 3.00389)
+
+[node name="Wall22" parent="Level BSP/Hallway" instance=ExtResource("2_173ik")]
+transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, -5.00648, 0, 3.00389)
+
+[node name="Wall23" parent="Level BSP/Hallway" instance=ExtResource("2_173ik")]
+transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, -3.00389, 0, 3.00389)
+
+[node name="Wall24" parent="Level BSP/Hallway" instance=ExtResource("2_173ik")]
+transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, -1.00389, 0, 3.00389)
+
+[node name="Wall28" parent="Level BSP/Hallway" instance=ExtResource("2_173ik")]
+transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 1.0013, 0, 3.00389)
+
+[node name="Wall29" parent="Level BSP/Hallway" instance=ExtResource("2_173ik")]
+transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, 3.00389, 0, 3.00389)
+
+[node name="Wall16" parent="Level BSP/Hallway" instance=ExtResource("2_173ik")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 5.00648, 0, -3.00389)
+
+[node name="Floor4" parent="Level BSP/Hallway" instance=ExtResource("3_m17li")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00648, 0, 3.00389)
+
+[node name="Floor5" parent="Level BSP/Hallway" instance=ExtResource("3_m17li")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00648, 0, 1.0013)
+
+[node name="Floor6" parent="Level BSP/Hallway" instance=ExtResource("3_m17li")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00648, 0, -1.0013)
+
+[node name="Floor7" parent="Level BSP/Hallway" instance=ExtResource("3_m17li")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00648, 0, -3.00389)
+
+[node name="Floor8" parent="Level BSP/Hallway" instance=ExtResource("3_m17li")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.0013, 0, 3.00389)
+
+[node name="Floor12" parent="Level BSP/Hallway" instance=ExtResource("3_m17li")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.00389, 0, 3.00389)
+
+[node name="Floor9" parent="Level BSP/Hallway" instance=ExtResource("3_m17li")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.0013, 0, 3.00389)
+
+[node name="Floor10" parent="Level BSP/Hallway" instance=ExtResource("3_m17li")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.00389, 0, 3.00389)
+
+[node name="Floor11" parent="Level BSP/Hallway" instance=ExtResource("3_m17li")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.00648, 0, 3.00389)
+
+[node name="Celling5" parent="Level BSP/Hallway" instance=ExtResource("4_eo2c8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00648, 0, -3.00389)
+
+[node name="Celling6" parent="Level BSP/Hallway" instance=ExtResource("4_eo2c8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00648, 0, -1.0013)
+
+[node name="Celling7" parent="Level BSP/Hallway" instance=ExtResource("4_eo2c8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00648, 0, 1.0013)
+
+[node name="Celling8" parent="Level BSP/Hallway" instance=ExtResource("4_eo2c8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00648, 0, 3.00389)
+
+[node name="Celling9" parent="Level BSP/Hallway" instance=ExtResource("4_eo2c8")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.00389, 0, 3.00389)
+
+[node name="Celling10" parent="Level BSP/Hallway" instance=ExtResource("4_eo2c8")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.0013, 0, 3.00389)
+
+[node name="Celling11" parent="Level BSP/Hallway" instance=ExtResource("4_eo2c8")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.0013, 0, 3.00389)
+
+[node name="Celling12" parent="Level BSP/Hallway" instance=ExtResource("4_eo2c8")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.00389, 0, 3.00389)
+
+[node name="Celling13" parent="Level BSP/Hallway" instance=ExtResource("4_eo2c8")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.00648, 0, 3.00389)
+
+[node name="LoadLevelInteractable" parent="Level BSP" instance=ExtResource("5_i5hsr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.00778, 1.0669, 3.00389)
+TargetSpawnIndex = 1
+LocalIndex = 0
+
+[node name="LoadLevelInteractable2" parent="Level BSP" instance=ExtResource("5_i5hsr")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.99222, 1.0669, -3.99611)
+
+[node name="L_OmniLight3D" type="OmniLight3D" parent="Level BSP"]
+transform = Transform3D(1.0013, 0, 0, 0, 1.0013, 0, 0, 0, 1.0013, 4.44029, 2.00412, 3.7853)
+light_color = Color(0.584314, 0.529412, 0.439216, 1)
+light_energy = 0.232
+
+[node name="L_OmniLight3D4" type="OmniLight3D" parent="Level BSP"]
+transform = Transform3D(1.0013, 0, 0, 0, 1.0013, 0, 0, 0, 1.0013, -0.566193, 2.00412, 3.7853)
+light_color = Color(0.584314, 0.529412, 0.439216, 1)
+light_energy = 0.232
+
+[node name="L_OmniLight3D5" type="OmniLight3D" parent="Level BSP"]
+transform = Transform3D(1.0013, 0, 0, 0, 1.0013, 0, 0, 0, 1.0013, -5.57268, 2.00412, 3.7853)
+light_color = Color(0.584314, 0.529412, 0.439216, 1)
+light_energy = 0.232
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Level BSP"]
+transform = Transform3D(0.997008, -0.0239608, -0.0894231, 0.00332459, -0.957288, 0.293571, -0.0925179, -0.292611, -0.953108, -2.08472, 1.68513, -3.35362)
+light_color = Color(0.619608, 0.705882, 0.819608, 1)
+light_energy = 0.256
+shadow_enabled = true
