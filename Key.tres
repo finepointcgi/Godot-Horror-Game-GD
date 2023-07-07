@@ -1,6 +1,8 @@
-[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bigh3na66fs61"]
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://bigh3na66fs61"]
 
+[ext_resource type="Resource" uid="uid://b27d1tfkch68t" path="res://Iron.tres" id="1_hfvye"]
 [ext_resource type="Script" path="res://ItemTest2.gd" id="1_hjlou"]
+[ext_resource type="Resource" uid="uid://b458g7gs3els6" path="res://Coal.tres" id="2_0up6r"]
 
 [sub_resource type="Gradient" id="Gradient_wwxpb"]
 
@@ -19,3 +21,7 @@ IsStackable = false
 Weight = 0.0
 SubItemFound = false
 DeleteItemAfterFound = false
+ItemCraftableMakeup = {
+ExtResource("1_hfvye"): 1,
+ExtResource("2_0up6r"): 1
+}

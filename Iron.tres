@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://b27d1tfkch68t"]
+
+[ext_resource type="Texture2D" uid="uid://dwrd2uv7au8hg" path="res://icon.svg" id="1_jf5ev"]
+[ext_resource type="Script" path="res://addons/FPCGI/InventorySystem/Scripts/Item.gd" id="2_34524"]
+
+[resource]
+script = ExtResource("2_34524")
+ID = 5
+Name = "Iron"
+ResourcePath = ""
+Icon = ExtResource("1_jf5ev")
+Quantity = 1
+StackSize = 1
+IsStackable = false
+Weight = 0.0
+SubItemFound = false
+DeleteItemAfterFound = false
+ItemCraftableMakeup = {}
