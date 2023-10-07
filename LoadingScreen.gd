@@ -8,8 +8,7 @@ var spawnIndex : int
 @export var  tips : Array[String]
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -24,13 +23,14 @@ func _process(delta):
 			print("Level Loaded")
 			$ProgressBar.value = 100
 			waitForInput = true
-	pass
 
 func _input(event):
 	if waitForInput:
 		if event is InputEventKey:
 			if inputKeyPressed:
-				ChangeScene(ResourceLoader.load_threaded_get(path))
+				var loadedResource = ResourceLoader.load_threaded_get(path)
+				if loadedResource:
+					ChangeScene(loadedResource)
 			if !event.pressed:
 				inputKeyPressed = false
 			else:
@@ -46,11 +46,14 @@ func ChangeScene(resource : PackedScene):
 			item.queue_free()
 	GameManager.CheckForPlayer()
 	GameManager.MovePlayer(spawnIndex)
+	GameManager.Player.ReadyPlayer()
 	queue_free()
 	
 func LoadLevel(path : String, spawnIndex : int):
 	self.path = path
 	self.spawnIndex = spawnIndex
+	GameManager.loadedLevel = path
+	GameManager.spawnIndex = spawnIndex
 	show()
 	if tips.size() != 0:
 		$Control/VBoxContainer2/TipValue.text = tips[randi() % tips.size()]
@@ -58,7 +61,8 @@ func LoadLevel(path : String, spawnIndex : int):
 	var levelname = items[items.size() - 1].split(".")
 	$Control/VBoxContainer/LevelName.text = levelname[0]
 	if(ResourceLoader.has_cached(path)):
-		ResourceLoader.load_threaded_get(path)
+		loading = true
+		waitForInput = true
 	else:
 		ResourceLoader.load_threaded_request(path, "", true)
 		loading = true

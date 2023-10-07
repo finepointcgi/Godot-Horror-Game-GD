@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://gacjukqwwi5s"]
+[gd_scene load_steps=12 format=3 uid="uid://gacjukqwwi5s"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_rddcm"]
 
@@ -18,16 +18,113 @@ points = PackedVector3Array(0, 1.59, 0, 7.5, 0, -6.2, -7.5, 0, -6.4, 0, 2, 0, 7.
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tcxad"]
 points = PackedVector3Array(0, 1.59, 0, 20, 0, -16, 20, 2, -16, 0, 2, 0, -20, 2, -16, -20, 0, -16)
 
-[node name="Enemy" type="CharacterBody3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_0v5ep"]
+size = Vector3(0.399767, 1, 0.489636)
+
+[sub_resource type="Animation" id="Animation_w1k51"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerPickup:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.0430491, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerPickup:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerPickup:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1.01442, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_ds082"]
+resource_name = "kill player"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerPickup:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.0430491, -0.25, 0, 0.25, 0, 0.0491047, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerPickup:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.847265, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerPickup:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-1.01442, -0.25, 0, 0.25, 0, -1.15713, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"KillPlayer"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6l2q0"]
+_data = {
+"RESET": SubResource("Animation_w1k51"),
+"kill player": SubResource("Animation_ds082")
+}
+
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("waypoints")]
 transform = Transform3D(0.999101, 0, 0.0423989, 0, 1, 0, -0.0423989, 0, 0.999101, -3.53497, 0, -5.64924)
 script = ExtResource("1_rddcm")
+waypoints = []
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11734, 0)
 shape = SubResource("CapsuleShape3D_fyuk4")
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12522, 0)
+transform = Transform3D(1, 0, 1.3856e-10, 0, 1, 0, 1.74622e-09, 0, 1, 0, 1.12522, 0)
 mesh = SubResource("CapsuleMesh_t6uvv")
 
 [node name="MeshInstance3d2" type="MeshInstance3D" parent="."]
@@ -67,6 +164,21 @@ shape = SubResource("ConvexPolygonShape3D_tcxad")
 [node name="Head" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46375, 0)
 
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, -1.05956e-09, 0, 1, 0, 1.74622e-09, 0, 1, 0.040349, 0, -0.950797)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 9.04577e-09, 0, 1, 0, 4.17172e-10, 0, 1, -0.00374413, 1.3378, 0.0882277)
+shape = SubResource("BoxShape3D_0v5ep")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6l2q0")
+}
+
+[node name="PlayerPickup" type="Node3D" parent="."]
+transform = Transform3D(1, 0, -5.85204e-09, 0, 1, 0, 1.74622e-09, 0, 1, 0.0430491, 0, -1.01442)
+
 [connection signal="timeout" from="PatrolTimer" to="." method="_on_patrol_timer_timeout"]
 [connection signal="body_entered" from="HearingFar" to="." method="_on_hearing_far_body_entered"]
 [connection signal="body_exited" from="HearingFar" to="." method="_on_hearing_far_body_exited"]
@@ -76,3 +188,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46375, 0)
 [connection signal="body_exited" from="SightClose" to="." method="_on_sight_close_body_exited"]
 [connection signal="body_entered" from="SightFar" to="." method="_on_sight_far_body_entered"]
 [connection signal="body_exited" from="SightFar" to="." method="_on_sight_far_body_exited"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

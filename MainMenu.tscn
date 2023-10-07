@@ -24,4 +24,13 @@ text = "Start Game"
 visible = false
 layout_mode = 1
 
+[node name="LoadGame" type="Button" parent="."]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 253.0
+offset_right = 392.0
+offset_bottom = 284.0
+text = "Load Game"
+
 [connection signal="button_down" from="StartGame" to="." method="_on_start_game_button_down"]
+[connection signal="button_down" from="LoadGame" to="." method="_on_load_game_button_down"]

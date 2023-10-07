@@ -11,7 +11,7 @@ enum States{
 @onready var navigationAgent := $NavigationAgent3D
 @onready var player := get_tree().get_nodes_in_group("Player")[0]
 @onready var patrolTimer := $PatrolTimer
-@onready @export var waypoints := get_tree().get_nodes_in_group("EnemyWaypoint")
+@export var waypoints := get_tree().get_nodes_in_group("EnemyWaypoint")
 
 @export var chaseSpeed = 3
 @export var patrolSpeed = 2
@@ -184,3 +184,17 @@ func _on_sight_close_body_entered(body):
 		playerInSightClose = false		
 		print("Player has left close sight")
 	pass # Replace with function body.
+
+
+
+
+func _on_area_3d_body_entered(body):
+	if body.is_in_group("Player"):
+		body.reparent($PlayerPickup)
+		$AnimationPlayer.play("kill player")
+		pass
+	pass # Replace with function body.
+
+func KillPlayer():
+	get_tree().get_nodes_in_group("Player")[0].KillPlayer()
+	pass
