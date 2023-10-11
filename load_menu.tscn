@@ -1,0 +1,100 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtd7qi33l54ln"]
+
+[ext_resource type="Script" path="res://LoadMenu.gd" id="1_30eoj"]
+[ext_resource type="PackedScene" uid="uid://dkj2gpmxho72d" path="res://load_button.tscn" id="2_nr47e"]
+
+[node name="LoadMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_30eoj")
+loadButton = ExtResource("2_nr47e")
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 76.0
+offset_right = 443.0
+offset_bottom = 553.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LoadButtons" type="VBoxContainer" parent="Panel2/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 618.0
+offset_top = 87.0
+offset_right = 1048.0
+offset_bottom = 362.0
+expand_mode = 5
+
+[node name="SaveName" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 658.0
+offset_top = 400.0
+offset_right = 965.0
+offset_bottom = 440.0
+text = "name"
+
+[node name="SaveDate" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 658.0
+offset_top = 442.0
+offset_right = 965.0
+offset_bottom = 482.0
+text = "Date"
+
+[node name="SaveLevel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 658.0
+offset_top = 481.0
+offset_right = 965.0
+offset_bottom = 521.0
+text = "Level"
+
+[node name="LoadSceneButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -201.0
+offset_top = -82.0
+offset_right = -38.0
+offset_bottom = -39.0
+grow_horizontal = 0
+grow_vertical = 0
+disabled = true
+text = "Load"
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1085.0
+offset_top = -79.0
+offset_right = -922.0
+offset_bottom = -36.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Back"
+
+[connection signal="button_down" from="LoadSceneButton" to="." method="_on_load_scene_button_button_down"]
+[connection signal="button_down" from="Back" to="." method="_on_back_button_down"]

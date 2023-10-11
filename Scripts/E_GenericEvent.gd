@@ -26,3 +26,12 @@ func _on_body_entered(body):
 			audioPlayer.play()
 			E_GenericEventPlayed = true
 	pass # Replace with function body.
+
+func Save() -> Dictionary:
+	return { 
+		"name": get_path(),
+		"hasPlayed" : var_to_str(E_GenericEventPlayed)
+	}
+func Load(data):
+	E_GenericEventPlayed = str_to_var(data.hasPlayed)
+	

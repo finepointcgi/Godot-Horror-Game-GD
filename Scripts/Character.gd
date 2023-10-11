@@ -142,6 +142,9 @@ func getInput() -> Vector3:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	if Input.is_action_just_pressed("Pause"):
+		GameManager.Pause()
 		
 	if(!is_on_floor()):
 		currentState = states.inAir
@@ -178,7 +181,7 @@ func getSurface() -> SurfaceObject:
 	return surface
 
 func _input(event):
-	if(event is InputEventMouseMotion) && !GameManager.Inventory.visible:
+	if(event is InputEventMouseMotion) && !GameManager.Inventory.visible && !GameManager.paused:
 		rotation.y -= event.relative.x / 1000 * sensitivity
 		$Camera3d.rotation.x -= event.relative.y / 1000 * sensitivity
 		rotation.x = clamp(rotation.x, PI/-2, PI/2)

@@ -29,6 +29,7 @@ var playerInEarshotClose : bool
 var playerInSightFar : bool
 var playerInSightClose : bool
 var soundObjects = []
+@export var id : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -198,3 +199,19 @@ func _on_area_3d_body_entered(body):
 func KillPlayer():
 	get_tree().get_nodes_in_group("Player")[0].KillPlayer()
 	pass
+
+func SaveEnemy() -> Dictionary:
+	return {
+		"id" : id,
+		"currentState" : currentState,
+		"waypointIndex" : waypointIndex,
+		"position" : global_position,
+		"rotation" : rotation_degrees
+	}
+
+func LoadEnemy(data):
+	id = data.id
+	currentState = data.currentState
+	waypointIndex = data.waypointIndex
+	global_position = data.position
+	rotation_degrees = data.rotation

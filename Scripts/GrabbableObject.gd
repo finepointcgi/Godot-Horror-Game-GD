@@ -28,3 +28,14 @@ func Interact():
 
 func GetInterfaceText():
 	return HoverOverText
+
+
+func Save() -> Dictionary:
+	return { 
+		"name": get_path(),
+		"position" : var_to_str(global_position),
+		"rotation" : var_to_str(rotation_degrees)
+	}
+func Load(data):
+	rotation_degrees = str_to_var(data.rotation)
+	global_position = str_to_var(data.position)

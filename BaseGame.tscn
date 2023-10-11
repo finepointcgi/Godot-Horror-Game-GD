@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://781w8n1rx31e"]
+[gd_scene load_steps=8 format=3 uid="uid://781w8n1rx31e"]
 
 [ext_resource type="PackedScene" uid="uid://drekry47fcjgd" path="res://MainMenu.tscn" id="1_4oarb"]
 [ext_resource type="Script" path="res://UI Manager.gd" id="2_askap"]
 [ext_resource type="PackedScene" uid="uid://dkv67e3txwrtt" path="res://addons/FPCGI/InventorySystem/Scenes/inventory.tscn" id="3_2bso0"]
+[ext_resource type="PackedScene" uid="uid://dtd7qi33l54ln" path="res://load_menu.tscn" id="3_clyws"]
 [ext_resource type="Resource" uid="uid://b27d1tfkch68t" path="res://Iron.tres" id="4_vvlji"]
+[ext_resource type="PackedScene" uid="uid://bj7a4twfrfx4r" path="res://pause_menu.tscn" id="5_fwct1"]
 
 [sub_resource type="GDScript" id="GDScript_sg5ja"]
 script/source = "extends Node
@@ -18,12 +20,12 @@ func _ready():
 [node name="LevelBase" type="Node" parent="."]
 script = SubResource("GDScript_sg5ja")
 
-[node name="Control" parent="LevelBase" instance=ExtResource("1_4oarb")]
-
 [node name="Player" type="Node" parent="." groups=["PlayerParent"]]
 
 [node name="UI Manager" type="Node" parent="."]
 script = ExtResource("2_askap")
+PauseMenu = ExtResource("5_fwct1")
+LoadMenu = ExtResource("3_clyws")
 
 [node name="Inventory" parent="UI Manager" instance=ExtResource("3_2bso0")]
 visible = false
@@ -44,6 +46,8 @@ offset_top = 14.0
 offset_right = 344.0
 offset_bottom = 55.0
 text = "Load"
+
+[node name="Control" parent="UI Manager" instance=ExtResource("1_4oarb")]
 
 [connection signal="button_down" from="UI Manager/Inventory/Save" to="UI Manager/Inventory" method="_on_save_button_down"]
 [connection signal="button_down" from="UI Manager/Inventory/Load" to="UI Manager/Inventory" method="_on_load_button_down"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkj2gpmxho72d"]
+
+[ext_resource type="Script" path="res://LoadButton.gd" id="1_62f35"]
+
+[node name="LoadButton" type="Button"]
+text = "Name "
+script = ExtResource("1_62f35")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]

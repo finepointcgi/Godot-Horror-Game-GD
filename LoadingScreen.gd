@@ -45,7 +45,10 @@ func ChangeScene(resource : PackedScene):
 			GameManager.LevelBase.remove_child(item)
 			item.queue_free()
 	GameManager.CheckForPlayer()
-	GameManager.MovePlayer(spawnIndex)
+	if !GameManager.LoadingFromSave:
+		GameManager.MovePlayer(spawnIndex, Vector3(0,0,0), Vector3(0,0,0))
+	else:
+		GameManager.MovePlayer(spawnIndex, SaveLoadManager.PlayerLocation, SaveLoadManager.PlayerRotation)
 	GameManager.Player.ReadyPlayer()
 	queue_free()
 	
