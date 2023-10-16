@@ -30,7 +30,9 @@ func _input(event):
 	if waitForInput:
 		if event is InputEventKey:
 			if inputKeyPressed:
+				GameManager.UnpauseGame()
 				ChangeScene(ResourceLoader.load_threaded_get(path))
+			
 			if !event.pressed:
 				inputKeyPressed = false
 			else:
@@ -38,14 +40,17 @@ func _input(event):
 
 func ChangeScene(resource : PackedScene):
 	var currentNode = resource.instantiate()
+	
+	GameManager.CheckForPlayer()
 	GameManager.LevelBase.add_child(currentNode)
 	
 	for item in GameManager.LevelBase.get_children():
 		if item != currentNode:
 			GameManager.LevelBase.remove_child(item)
 			item.queue_free()
-	GameManager.CheckForPlayer()
-	GameManager.MovePlayer(spawnIndex)
+	
+	if !GameManager.LoadingFromSave:
+		GameManager.MovePlayer(spawnIndex)
 	queue_free()
 	
 func LoadLevel(path : String, spawnIndex : int):

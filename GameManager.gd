@@ -4,7 +4,13 @@ var LevelBase : Node
 var Player : Node3D
 var playerScenePath : String = "res://Scenes/Character.tscn"
 var Inventory : Inventory
+var UIManager : Node
 
+var LoadedLevel : String
+var SpawnIndex : int
+
+var Paused : bool
+var LoadingFromSave : bool
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -15,6 +21,10 @@ func _process(delta):
 	pass
 	
 func LoadLevel(path : String, spawnIndex : int):
+	
+	LoadedLevel = path
+	SpawnIndex = spawnIndex
+	
 	var loadScene : PackedScene = ResourceLoader.load("res://loading_screen.tscn")
 	var loadSceneNode = loadScene.instantiate()
 	get_tree().root.add_child(loadSceneNode)
@@ -33,3 +43,13 @@ func MovePlayer(targetIndex : int):
 		if i.SpawnIndex == targetIndex:
 			Player.global_position = i.global_position
 			Player.rotation_degrees = i.rotation_degrees
+
+func PauseGame():
+	UIManager.Pause(true)
+	Paused = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+func UnpauseGame():
+	UIManager.Pause(false)
+	Paused = false
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

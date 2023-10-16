@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://781w8n1rx31e"]
+[gd_scene load_steps=6 format=3 uid="uid://781w8n1rx31e"]
 
+[ext_resource type="Script" path="res://UIManager.gd" id="1_1uh6m"]
 [ext_resource type="PackedScene" uid="uid://drekry47fcjgd" path="res://MainMenu.tscn" id="1_4oarb"]
+[ext_resource type="PackedScene" uid="uid://b50q57f5m0tqa" path="res://pause_menu.tscn" id="2_ogcuo"]
+[ext_resource type="PackedScene" uid="uid://dkv67e3txwrtt" path="res://addons/FPCGI/InventorySystem/Scenes/inventory.tscn" id="3_og5q2"]
 
 [sub_resource type="GDScript" id="GDScript_sg5ja"]
 script/source = "extends Node
@@ -15,6 +18,13 @@ func _ready():
 [node name="LevelBase" type="Node" parent="."]
 script = SubResource("GDScript_sg5ja")
 
-[node name="Control" parent="LevelBase" instance=ExtResource("1_4oarb")]
-
 [node name="Player" type="Node" parent="." groups=["PlayerParent"]]
+
+[node name="UIManager" type="Node" parent="."]
+script = ExtResource("1_1uh6m")
+PauseMenu = ExtResource("2_ogcuo")
+
+[node name="Control" parent="UIManager" instance=ExtResource("1_4oarb")]
+
+[node name="Inventory" parent="UIManager" instance=ExtResource("3_og5q2")]
+visible = false

@@ -1,0 +1,97 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhmslu1jfrrdq"]
+
+[ext_resource type="Script" path="res://load_menu.gd" id="1_4mlhx"]
+[ext_resource type="PackedScene" uid="uid://tr4pwxcu2jx1" path="res://load_button.tscn" id="2_6sw7p"]
+
+[node name="LoadMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4mlhx")
+LoadButton = ExtResource("2_6sw7p")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 51.0
+offset_right = 418.0
+offset_bottom = 514.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LoadButtons" type="VBoxContainer" parent="Panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 562.0
+offset_right = 294.0
+offset_bottom = 603.0
+text = "Back"
+
+[node name="LoadSceneButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 866.0
+offset_top = 562.0
+offset_right = 1079.0
+offset_bottom = 603.0
+text = "Load"
+
+[node name="SaveName" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 551.0
+offset_top = 392.0
+offset_right = 827.0
+offset_bottom = 432.0
+text = "Save Name"
+
+[node name="SaveDate" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 551.0
+offset_top = 433.0
+offset_right = 827.0
+offset_bottom = 473.0
+text = "SaveDate"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 551.0
+offset_top = 67.0
+offset_right = 1099.0
+offset_bottom = 373.0
+expand_mode = 5
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 24.0
+offset_right = 340.0
+offset_bottom = 49.0
+text = "Saves:"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -70.0
+offset_right = 92.0
+offset_bottom = 52.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 28
+text = "Load Game"
+
+[connection signal="button_down" from="Back" to="." method="_on_back_button_down"]
+[connection signal="button_down" from="LoadSceneButton" to="." method="_on_load_scene_button_button_down"]

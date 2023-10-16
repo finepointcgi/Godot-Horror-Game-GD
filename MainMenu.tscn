@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://drekry47fcjgd"]
+[gd_scene load_steps=4 format=3 uid="uid://drekry47fcjgd"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_fncpg"]
-[ext_resource type="PackedScene" uid="uid://de1xei1qs3vmy" path="res://loading_screen.tscn" id="2_2ljy7"]
+[ext_resource type="PackedScene" path="res://loading_screen.tscn" id="2_2ljy7"]
+[ext_resource type="PackedScene" uid="uid://dhmslu1jfrrdq" path="res://load_menu.tscn" id="3_p3ebn"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -20,8 +21,21 @@ offset_right = 389.0
 offset_bottom = 237.0
 text = "Start Game"
 
+[node name="LoadGame" type="Button" parent="."]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 255.0
+offset_right = 389.0
+offset_bottom = 293.0
+text = "Load Game"
+
 [node name="LoadingScreen" parent="." instance=ExtResource("2_2ljy7")]
 visible = false
 layout_mode = 1
 
+[node name="LoadMenu" parent="." instance=ExtResource("3_p3ebn")]
+visible = false
+layout_mode = 1
+
 [connection signal="button_down" from="StartGame" to="." method="_on_start_game_button_down"]
+[connection signal="button_down" from="LoadGame" to="." method="_on_load_game_button_down"]

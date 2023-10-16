@@ -35,7 +35,9 @@ func _ready():
 	initSurfaceObject.SurfaceResource = ResourceLoader.load("res://Sounds/Wood.tres")
 
 func _physics_process(delta):
-	
+	if GameManager.Paused:
+		return
+		
 	wasInAir = !is_on_floor()
 	var velocity = getInput()
 	LightLevel = get_node("Light Detect").LightLevel
@@ -133,8 +135,8 @@ func getInput() -> Vector3:
 		currentState = states.jumping
 	
 	if Input.is_action_just_pressed("Inventory"):
-		$Inventory.visible = !$Inventory.visible
-		if $Inventory.visible:
+		GameManager.Inventory.visible = !GameManager.Inventory.visible
+		if GameManager.Inventory.visible:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -152,6 +154,12 @@ func getInput() -> Vector3:
 			var temp = grabbedObject
 			GrabObject(grabbedObject)
 			temp.apply_impulse(($Camera3d.global_position - temp.global_position).normalized() * -1 * 5)
+	
+	if Input.is_action_just_pressed("Pause"):
+		if GameManager.Paused:
+			GameManager.UnpauseGame()
+		else:
+			GameManager.PauseGame()
 	
 	return direction
 	
@@ -174,7 +182,9 @@ func getSurface() -> SurfaceObject:
 	return surface
 
 func _input(event):
-	if(event is InputEventMouseMotion) && !$Inventory.visible:
+	if GameManager.Paused:
+		return
+	if(event is InputEventMouseMotion) && !GameManager.Inventory.visible:
 		rotation.y -= event.relative.x / 1000 * sensitivity
 		$Camera3d.rotation.x -= event.relative.y / 1000 * sensitivity
 		rotation.x = clamp(rotation.x, PI/-2, PI/2)
@@ -188,3 +198,17 @@ func GrabObject(obj : RigidBody3D):
 		grabbedObject = null
 		$Camera3d/Generic6DOFJoint3D.node_b = $Camera3d/Generic6DOFJoint3D/ResetObject.get_path()
 		
+
+func Save():
+	var data = {
+		"position" : var_to_str(global_position),
+		"rotation" : var_to_str( rotation_degrees),
+		"name" : get_path()
+	}
+	
+	return data
+	
+func Load(data):
+	global_position = str_to_var(data.position)
+	rotation_degrees = str_to_var(data.rotation)
+	pass

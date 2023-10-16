@@ -17,7 +17,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_8iow2"]
 size = Vector3(0.644998, 1.89551, 2.3749)
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" groups=["Saveable"]]
 transform = Transform3D(0.998705, 0, 0, 0, 0.998705, 0, 0, 0, 0.998705, 0, 0, 0)
 script = ExtResource("1_4jddo")
 

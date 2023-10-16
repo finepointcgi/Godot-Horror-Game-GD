@@ -1,0 +1,80 @@
+[gd_scene load_steps=3 format=3 uid="uid://b50q57f5m0tqa"]
+
+[ext_resource type="Script" path="res://PauseMenu.gd" id="1_pv3fv"]
+[ext_resource type="PackedScene" uid="uid://dhmslu1jfrrdq" path="res://load_menu.tscn" id="2_qumbn"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pv3fv")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -244.0
+offset_top = -83.0
+offset_right = 244.0
+offset_bottom = 208.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Resume" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="Save" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Save"
+
+[node name="Load" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Load"
+
+[node name="Settings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Setting"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -137.0
+offset_right = 35.0
+offset_bottom = -97.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Paused"
+
+[node name="LoadMenu" parent="." instance=ExtResource("2_qumbn")]
+visible = false
+layout_mode = 1
+
+[connection signal="button_down" from="VBoxContainer/Resume" to="." method="_on_resume_button_down"]
+[connection signal="button_down" from="VBoxContainer/Save" to="." method="_on_save_button_down"]
+[connection signal="button_down" from="VBoxContainer/Load" to="." method="_on_load_button_down"]
+[connection signal="button_down" from="VBoxContainer/Settings" to="." method="_on_settings_button_down"]
+[connection signal="button_down" from="VBoxContainer/Exit" to="." method="_on_exit_button_down"]

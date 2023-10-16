@@ -21,3 +21,16 @@ func Interact():
 
 func GetInterfaceText():
 	return HoverOverText
+
+func Save():
+	return {
+		"name": get_path(),
+		"position": var_to_str(global_position),
+		"rotation" : var_to_str(rotation_degrees),
+		"doorOpen" : var_to_str(doorOpen)
+	}
+	
+func Load(data):
+	global_position = str_to_var(data.position)
+	rotation_degrees = str_to_var(data.rotation)
+	doorOpen = str_to_var(data.doorOpen)

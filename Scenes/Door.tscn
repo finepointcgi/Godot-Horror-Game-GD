@@ -63,6 +63,7 @@ tracks/3/keys = {
 }],
 "times": PackedFloat32Array(0, 0.7)
 }
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_e6172"]
 resource_name = "DoorOpenSlow"
@@ -114,6 +115,7 @@ tracks/3/keys = {
 }],
 "times": PackedFloat32Array(-0.2)
 }
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_t1ggy"]
 resource_name = "Open"
@@ -168,6 +170,7 @@ tracks/3/keys = {
 }],
 "times": PackedFloat32Array(0, 0.4)
 }
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_nejlc"]
 length = 0.001
@@ -213,7 +216,7 @@ _data = {
 "RESET": SubResource("Animation_nejlc")
 }
 
-[node name="Door" type="StaticBody3D"]
+[node name="Door" type="StaticBody3D" groups=["Saveable"]]
 transform = Transform3D(-0.0131233, 0, 0.999914, 0, 1, 0, -0.999914, 0, -0.0131233, 0, 1.097, 0)
 collision_layer = 9
 collision_mask = 9
